@@ -13,5 +13,5 @@ jobs:
           persist-credentials: false 
 
       - name: Trigger repository_dispatch
-      - run: |
+        run: |
           curl -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" -H "Accept: application/vnd.github.everest-preview+json" -H "Content-Type: application/json" https://api.github.com/repos/intellifactory/inteallifactory.github.io/dispatches --data '{"event_type": "build_application"}'
