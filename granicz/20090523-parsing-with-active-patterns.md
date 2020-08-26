@@ -186,7 +186,7 @@ You can quickly test your code in F# Interactive:
 ```fsharp
 > match "sin(1 + 2 * 3)" with
     | Expression (e, Eof) ->
-        e |> printf "Match – AST: %A\n“
+        e |> printf "Match – AST: %A\n"
     | _ ->
         printf "No match\n”;;
 

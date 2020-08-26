@@ -10,7 +10,7 @@ Since the first meetup we started having weekly FP-BUD beer nights also. Let me 
 
 Anyhow, I just wanted to post a short description of the kind of things we are discussing - any feedback is welcome from other groups across the globe.
 
-So without any further due here are the abstracts for the upcoming May meetup:
+So without any further ado here are the abstracts for the upcoming May meetup:
 
  * **Permissive operators as a mechanism for language extensibility** by Diego Echeverri (IntelliFactory)
 

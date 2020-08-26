@@ -14,15 +14,15 @@ Here is what our final application will look like (after you ran some Logo code 
 
 Logo is an interesting language because it is strikingly simple yet quite powerful and it is an excellent medium to teach kids how to program. There are a lot of implementations out there and here you will see mine without any desire to adhere to often used or even standard features - my objective is simply to be able to write short Logo programs that create nice drawings.
 
-### The language
+## The language
 
 Logo programs are made up of words; these can be commands (that do not return a value) or functions (that return words), both operating on other words. Numbers are special words. Lists of expressions are enclosed in brackets and the value of a list is the value of the last item obtained by evaluating all of list elements first. Arguments to words having a meaning are passed "by-value" and using **prefix** notation. Our implementation supports the following "built-in" words:
 
-#### Commands and functions
+### Commands and functions
 
 `Canvas` e1 e2, `Left` (`Lt`) e1, `Right` (`Rt`) e1, `Forward` (`Fd`) e1, `PenUp`, `PenDown`, `Repeat` e1 e2, `Sum` (`+`) e1 e2, `Minus` (`-`) e1 e2, `Times` (`*`) e1 e2, `Divide` (`/`) e1 e2, `Min` e1 e2, `Max` e1 e2, `Sin` e1, `Cos` e1, `Tan` e1, `Pi`, `RepCount`, `To`
 
-#### Defining new words
+### Defining new words
 
 You can define new words (functions or commands) using `To`:
 
@@ -36,7 +36,7 @@ Single parameters can be given using a variable
 TO double :x + :x :x
 ```
 
-#### The language module
+### The language module
 
 First, we start by opening a few namespaces and declaring some basic types.
 
@@ -493,11 +493,11 @@ let eval_list im (state: state) gstate =
       eval im state gstate e) (state, gstate, None)
 ```
 
-#### How does the evaluator work?
+### How does the evaluator work?
 
 During evaluation we maintain the program state and the graphics state. Each argument to a defined word is evaluated (which could affect the graphics state, so this is preserved throughout) and passed to the definition (body) of that word. Built-in words are evaluated similarly. The program state changes at three locations: after evaluating a new word definition (using `To`, and we add a new function to the state), during evaluation of a function/command call (we add the formal parameters to the state with the value of each argument), and during evaluating the body of a `repeat` command (when we add a special variable called `:repcount` to the state; this can be read directly or through the `RepCount` built-in command).
 
-#### The client module
+### The client module
 
 The client code is straightforward and we don't show some of the event binding to preserve compactness:
 
@@ -615,6 +615,6 @@ to foobar :y [
 foobar 200
 ```
 
-### Further improvements
+## Further improvements
 
 The implementation just described lacks a number of standard Logo features. It makes no use of Logo's higher-order functions (`foreach`, etc.) using holes, there are no control flow commands, etc. These can be added with a small effort and we leave that for the reader to experiment with.
