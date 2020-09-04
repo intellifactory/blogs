@@ -4,13 +4,13 @@ categories: "bingmaps,f#,websharper"
 abstract: "The Bing Maps extension for WebSharper has been updated to version 7.0 of the library. It allows developers to use the latest features of Bing Maps, including info boxes and keyboard events. It also provides a convenient interface to the REST API for searches, routes and static map images."
 identity: "2063,74895"
 ---
-The <a href=http://www.websharper.com/extension/358-bmaps/None>Bing Maps extension for WebSharper</a> has been updated to version 7.0 of the library. It allows developers to use the latest features of Bing Maps, including info boxes and keyboard events. It also provides a convenient interface to the REST API for searches, routes and static map images.
+The [Bing Maps extension for WebSharper](http://www.websharper.com/extension/358-bmaps/None) has been updated to version 7.0 of the library. It allows developers to use the latest features of Bing Maps, including info boxes and keyboard events. It also provides a convenient interface to the REST API for searches, routes and static map images.
 
 The Bing Maps library has gone under a major overhaul when passing from version 6.3 to 7.0 - and so has the WebSharper Extension. It now uses our Interface Generator, which will allow us to make future updates to the API available lightning-fast to WebSharper developers.
 
-The following is an example minimal code to display a map showing a specific location. <c>credentials</c> is a string containing your Bing Maps Developer key.
+The following is an example minimal code to display a map showing a specific location. `credentials` is a string containing your Bing Maps Developer key.
 
-<code lang=fsharp>
+```fsharp
 [<JavaScript>]
 let MapElement () =
     Div []
@@ -26,13 +26,15 @@ let MapElement () =
 	    )
 	Bing.Map(el.Body, options) |> ignore
     )
-</code>
+```
 And here is a more complex sample showing several major features:
-<ul>
-<li>Adding entities on the map, like pushpins and info boxes;</li>
-<li>Querying the REST service for a route between two locations, displaying it on the map and printing directions.</li>
-</ul>
-<code lang=fsharp>
+
+
+ * Adding entities on the map, like pushpins and info boxes;
+ * Querying the REST service for a route between two locations, displaying it on the map and printing directions.
+
+
+```fsharp
     [<JavaScript>]
     let MapWithRouteSearch() =
         let origin = Input [Attr.Type "text"]
@@ -98,8 +100,8 @@ And here is a more complex sample showing several major features:
             button
             directions
         ]
-</code>
-As you can see, we augmented the API with facilities to invoke the REST services. Request functions in the <c>Bing.Rest</c> module take a description of your request to build and call the url with all necessary parameters. Finally, the provided callback receives the response from the Bing service.
+```
+As you can see, we augmented the API with facilities to invoke the REST services. Request functions in the `Bing.Rest` module take a description of your request to build and call the url with all necessary parameters. Finally, the provided callback receives the response from the Bing service.
 
 Below is a screenshot of the generated interactive map after searching for a route.
 
