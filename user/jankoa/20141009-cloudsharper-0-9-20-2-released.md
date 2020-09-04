@@ -1,0 +1,16 @@
+---
+title: "CloudSharper 0.9.20.2 released"
+categories: "cloudsharper,f#,websharper"
+abstract: "This is a bugfix release for the CS local service."
+identity: "4055,77461"
+---
+This release fixes a long-standing bug: closing an FSI session by opening or closing a workspace would start an asynchronous infinite loop, spinning CPU and failing to restart FSI properly.
+
+Install the latest local service to avoid this issue.
+
+Full change log:
+
+ * [#336](https://bitbucket.org/IntelliFactory/cloudsharper/issue/336/), [#555](https://bitbucket.org/IntelliFactory/cloudsharper/issue/555/): Fix CPU spinning on closing an FSI session.
+
+
+Happy coding!
