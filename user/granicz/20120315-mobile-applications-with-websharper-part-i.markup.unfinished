@@ -1,0 +1,12 @@
+---
+title: "Mobile applications with WebSharper - Part I"
+categories: "websharper,f#,sitelets,mobile"
+abstract: "The latest WebSharper 2012 Q1 installer (version 2.4.35 or above) supports a number of Visual Studio mobile application project templates, and all-in-all these come in two main flavors: using online and offline sitelets.  This short article discusses online and offline sitelets and explains more in depth how WebSharper mobile applications work."
+identity: "2476,75270"
+---
+The latest WebSharper 2012 Q1 installer (version 2.4.35 or above) supports a number of Visual Studio mobile application project templates, and all-in-all these come in two main flavors: using <b>online</b> and <b>offline</b> sitelets.
+
+Before I go into the details of what these mean, just a few words on sitelets. WebSharper sitelets are an abstraction for composable "site values" in F#.  By composable, we mean that they can be composed into larger sitelets with certain static guarantees.  By "site value" we mean an F# value that represents a "site" that, when deployed in a compatible web container, can respond to a set of specific requests with some specific content.  Composing sitelets yields larger sites that can respond to a larger set of requests.
+
+Now, with that out of the way, what about online versus offline? An online sitelet is what you may have used in your ordinary web development projects with WebSharper, it basically represents a full client-server application written in F#.  In contrast, an offline sitelet is a static rendering of such an application with dynamic JavaScript functionality, but without being able to access a specific "home" server (it can, on the other, hand access public web services.)
+

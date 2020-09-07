@@ -1,0 +1,64 @@
+---
+title: "Multi-targeting .NET projects with F# and FAKE"
+categories: ""
+abstract: "I am currently working on simplifying build configurations for a bunch of projects including WebSharper, IntelliFactory.Build, IntelliFactory.FastInvoke and eventually multiple WebSharper extensions. I am now using F# and FAKE when possible instead of MSBuild, and relying more heavily on the public NuGet repository. "
+identity: "3138,76342"
+---
+I am currently working on simplifying build configurations for a bunch of projects including WebSharper, IntelliFactory.Build, IntelliFactory.FastInvoke and eventually multiple WebSharper extensions. I am now using F# and FAKE when possible instead of MSBuild, and relying more heavily on the public NuGet repository.
+
+The good news is that abstracting things in F# and sharing common build logic in a library via NuGet really works well, and feels a lot more natural than MSBuild. Consider this Build.fsx file from FastInvoke:
+<code lang=fsharp>
+#r "packages/FAKE.1.74.131.0/tools/FakeLib.dll"
+#r "packages/IntelliFactory.Build.0.0.2/lib/net40/IntelliFactory.Build.dll"
+
+open System
+open System.IO
+open Fake
+module B = IntelliFactory.Build.CommonBuildSetup
+
+let Metadata =
+    let m = B.Metadata.Create()
+    m.Author <- Some "IntelliFactory"
+    m.AssemblyVersion <- Some (Version "0.0.0.0")
+    m.FileVersion <- Some (Version "0.0.4.0")
+    m.Description <- Some "Utilities for faster delegate invocation"
+    m.Product <- Some "IntelliFactory.FastInvoke"
+    m.Website <- Some "http://bitbucket.org/IntelliFactory/fastinvoke"
+    m
+
+let Frameworks = [B.Net20; B.Net40]
+
+let Solution =
+    B.Solution.Standard __SOURCE_DIRECTORY__ Metadata [
+        B.Project.FSharp "IntelliFactory.FastInvoke" Frameworks
+    ]
+
+Target "Build" Solution.Build
+Target "Clean" Solution.Clean
+
+match Environment.GetCommandLineArgs() with
+| xs when xs.[xs.Length - 1] = "Clean" -> RunTargetOrDefault "Clean"
+| _ -> RunTargetOrDefault "Build"
+</code>
+
+The FAKE-based build (well, together with some MSBuild boilerplate that I generate) accomplishes quite a few chores:
+
+    Bootstraps NuGet.exe without any binaries in the source repo
+    Resolves packages specified in solution packages.config, including pulling in FAKE and build logic such as IntelliFactory.Build
+    Determines current Mercurial hash or tag
+    Constructs AutoAssemblyInfo.fs with company metadata and mercurial tag
+    Constructs MSBuild boilerplate to help projects find NuGet-installed dependencies without specifying the version, for easy dependency version updates
+    Builds specified projects in multiple framework configurations
+
+
+And you can, of course, do more inside the FAKE file.
+
+The bad news is that I expected quite a bit more from FAKE, and I end up fighting it more than using it - note that these can be either legit problems with FAKE or else my limited understanding of it.
+
+    Running FAKE.exe drops your code into the 2.0 runtime, even if the host process was in 4.0 - not acceptable for me, had to replace FAKE.exe invocation with FSI.exe invocation
+    FAKE had no easy support for dependency tracking, such as not overwriting a file unless necessary (useful to prevent say the MSBuild it invokes from doing work twice) - had to roll a few or my own helpers
+    Surprisingly FAKE MSBuild helpers are calling MSBuild process instead of using the in-process MSBuild API. By using MSBuild API myself, I am able to speed things up a bit.
+    On a similar note, I toyed with invoking either FAKE or Fsi.exe in a slave AppDomain (should be faster than a separate process, right?) from the host MSBuild process that my build starts with. The approach failed miserably. Fsi.exe is reading System.Environment.GetCommandLineArgs() instead of reading the EntryPoint args, so that it does not see the args I pass to the slave AppDomain, but instead sees the args that MSBuild receives. And FAKE, again, drops me into the 2.0 runtime, probably starting another system process too.
+
+
+In the end my impression is that there is tremendous value in automating build logic in F# instead of MSBuild. As to FAKE, it seems most of its value comes from the helper library - some shared direct-style imperative recipes. I would like to see that released separately, say as FAKE.Lib NuGet package, to make it easier to use standalone. Also, it seems that FAKE could really benefit from some extra standard features for dependency management such as comparing target input and output files by checksum or date, to be on par with rake. 

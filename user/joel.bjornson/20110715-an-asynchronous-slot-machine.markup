@@ -1,0 +1,6 @@
+---
+title: "An asynchronous Slot machine"
+categories: "f#"
+abstract: "In this post I highlight the enhanced support for asynchronous programming in WebSharper. I show an example, modelling a  slot machine as asynchronous computations run in parallel."
+identity: "1905,74737"
+---

@@ -1,0 +1,6 @@
+---
+title: "More of Ext JS and WebSharper"
+categories: "f#"
+abstract: "Following up on the previous post on the upcoming WebSharper Ext JS (Native) extension with an example of how to construct a sortable tree widget and reacting to changes of the ordering of tree nodes."
+identity: "1910,74742"
+---

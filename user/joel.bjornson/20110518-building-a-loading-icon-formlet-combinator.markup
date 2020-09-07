@@ -1,0 +1,6 @@
+---
+title: "Building a Loading Icon Formlet Combinator"
+categories: ""
+abstract: "In this post I show how to implement a formlet combinator encapsulating the common AJAX pattern of displaying a loading icon while submitting values to the server and waiting for a response."
+identity: "833,74565"
+---

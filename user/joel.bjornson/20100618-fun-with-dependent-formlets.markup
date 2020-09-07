@@ -1,0 +1,6 @@
+---
+title: "Fun with dependent formlets"
+categories: "f#"
+abstract: "In this post I'm implementing a simple spread-sheet grid widget with dynamic summation of rows and columns, using dependent formlets."
+identity: "1909,74741"
+---
