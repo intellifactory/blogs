@@ -4,8 +4,6 @@ categories: "aspnetcore,csharp,fsharp,websharper"
 abstract: "It is finally here! Today we are releasing WebSharper 4.2."
 identity: "5507,84664"
 ---
-# WebSharper 4.2 released
-
 It is finally here! Today we are releasing WebSharper 4.2.
 
 The main highlight of this release is the support for .NET Standard 2.0 and ASP.NET Core.

@@ -12,11 +12,13 @@ Documentation: [WebSharper 4.x for C#](https://developers.websharper.com/docs/v4
 
 The release notes are also found on [GitHub](https://github.com/dotnet-websharper/core/releases/tag/4.5.8.327).
 
-# Fixes
+## Fixes
+
 * #1041 Add missing constructor to `WebSharper.JavaScript.Dom.MutationObserver`.
 * #1029 No more build warnings about `An error occurred while reading the F# metadata node...`
 
-# Enhancements
+## Enhancements
+
 * #1043 Support new FSharp.Core 4.6 functions on the client side (`ValueOption` type and module, `List/Seq/Array.tryExactlyOne`).
 * Updated to use `FSharp.Compiler.Service` version `26.0.1`. Anonymous records are not supported yet on the client side.
 * Visual Studio templates now support 2019 Preview.

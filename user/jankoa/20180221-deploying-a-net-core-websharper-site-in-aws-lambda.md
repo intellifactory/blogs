@@ -9,7 +9,7 @@ A free AWS account is enough to try this, up to one million requests per month. 
 
 You can use [this guide](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-signup.html) for signing up for an AWS account, and to download and configure your credentials for use by the command tool or the AWS Toolkit for Visual Studio.
 
-# Setting up
+## Setting up
 
 First, install the templates if you don't have them yet, with:
 
@@ -47,12 +47,13 @@ To get access to the `dotnet lambda` CLI, we also need a `DotNetCliToolReference
 
 Then run `dotnet restore` to install the CLI tool. ([Eventually](https://github.com/NuGet/Home/issues/4901) this will all be done automatically by `dotnet install tool -g Amazon.Lambda.Tools`)
 
-# Adding the entry point
+## Adding the entry point
 
 Open your `Program.cs` or `Program.fs` file, and add this new class that will work as the entry point for the Lambda function.
 You can leave the existing `Program` class/module, so the application will continue to run locally with Kestrel or in IIS too.
 
 For C#:
+
 ```csharp
 public class LambdaEntryPoint : Amazon.Lambda.AspNetCoreServer.APIGatewayProxyFunction 
 {
@@ -64,6 +65,7 @@ public class LambdaEntryPoint : Amazon.Lambda.AspNetCoreServer.APIGatewayProxyFu
 ```
 
 For F#:
+
 ```fsharp
 type LambdaEntryPoint() =
     inherit Amazon.Lambda.AspNetCoreServer.APIGatewayProxyFunction()
@@ -72,7 +74,7 @@ type LambdaEntryPoint() =
         builder.UseStartup<Startup>() |> ignore
 ```
 
-# Adding a serverless.template
+## Adding a serverless.template
 
 For multi-page applications to run correctly, we need separate AWS Lambda functions to handle the root and the sub-paths.
 The easiest way to manage this is by using AWS CloudFormation, which enables handling multipe service installations under a single stack name.
@@ -142,7 +144,7 @@ Create a file called `serverless.template`, and add this as content:
 
 Modify assembly and namespace name from `LambdaWS` to the name of your project if different.
 
-# Deployment
+## Deployment
 
 We are ready to deploy our first test site. It can be done both from command line or using Visual Studio.
 First let's keep using the command line. (You can jump ahead to use Visual Studio for a quicker setup.)
@@ -163,7 +165,7 @@ Click it then `API Gateway`, scroll down to see its properties and open dropdown
 
 ![Deployed app](https://i.imgur.com/Em5ky7e.png)
 
-# Deploying and configuring via AWS Toolkit
+## Deploying and configuring via AWS Toolkit
 
 If you are using Visual Studio, it is helpful to install the [AWS Toolkit for Visual Studio](https://aws.amazon.com/visualstudio/).
 This adds the AWS Explorer to view and manage your deployed resources, and also right-click commands for the Solution Explorer to deploy projects.
@@ -175,7 +177,7 @@ Click `Publish` and when status is displaying `CREATE_COMPLETE`, you can click t
 
 ![Publish result](https://i.imgur.com/berW90e.png)
 
-# To be continued
+## To be continued
 
 We will be picking it up from here with:
 

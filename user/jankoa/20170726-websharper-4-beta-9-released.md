@@ -8,7 +8,7 @@ Lates WebSharper 4 beta has compiler and output optimizations, auto-versioning s
 
 Latest Visual Studio template installers compatible with VS2015/2017 is [available here](http://websharper.com/Zafir.vsix).
 
-# Fixes and Improvements
+## Fixes and Improvements
 
 * [#722](https://github.com/intellifactory/websharper/issues/722) Auto-hash WebSharper-generated output and files included as `WebResource`, use this hash on generating links to avoid browsers caching an outdated version. This is an automatic feature, no configuration currently.
 * [#725](https://github.com/intellifactory/websharper/issues/725) Client-side JSON can de/serialize custom classes. (`Serializable` attribute and default constructor are not required as on the server.)
@@ -26,6 +26,6 @@ Latest Visual Studio template installers compatible with VS2015/2017 is [availab
 >
 > Usage: `<WebSharperAnalyzeClosures>True</WebSharperAnalyzeClosures>` or `<WebSharperAnalyzeClosures>MoveToTop</WebSharperAnalyzeClosures>`. The latter additionally moves all non-capturing lambdas to top level automatically (experimental).
 
-# Breaking change
+## Breaking change
 
 * Previously, having `[<Inline "myLibrary.doSomething()">]` and `[<Inline "$global.myLibrary.doSomething()">]` was working equivalently. Now access to global scope without the `$global` object is assumed to be initialized before the current script starts running (WebSharper itself takes care of this, if you use the `Require` attribute) and will not change, so it is safe to shorten. Whenever you want the exact call on the current global scope (`window` object), be sure to use `$global`.

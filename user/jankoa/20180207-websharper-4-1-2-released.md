@@ -12,10 +12,12 @@ Documentation: [WebSharper 4.1 for C#](http://developers-test.websharper.io/docs
 
 The release notes are also found on [GitHub](https://github.com/dotnet-websharper/websharper/releases/tag/4.1.2.178).
 
-# New features
+## New features
+
 * WebSharper for C# now supports syntax introduced in C# 7.2: `in` arguments and `ref readonly` returns, non-trailing named arguments, numeric literals with leading underscores, `private protected`.
 
-# Fixes/improvements
+## Fixes/improvements
+
 * WebSharper build errors and warnings in F# projects now show up correctly in Errors window and as squiggly underlines.
 * Fixed deserializing an empty `Set` value sent to a `Remote` function.
 * `Map` and `Set` values with any key type can now be serialized into JSON with `Json.Serialize`. Maps are stored as a flat list of key/value pairs. `Map<string>` still serializes to a single JSON object.
@@ -25,7 +27,7 @@ The release notes are also found on [GitHub](https://github.com/dotnet-websharpe
 * `EndPoint "/"` can be used on a union case with fields (for example another union, allowing breaking up a big endpoint definition into multiple union types)
 * Decoding/encoding string values by `Router.Infer` (and `Router.rString`) are now using the same logic as WebSharper 4.0: any non-alphanumeric character replaced to `~xx` or `~uxxxx`. This ensures that string values are recovered properly and are passing standard URL correctness checks.
 
-# Example for C# routing
+## Example for C# routing
 
 A C# class hierarchy can define an inferred router:
 

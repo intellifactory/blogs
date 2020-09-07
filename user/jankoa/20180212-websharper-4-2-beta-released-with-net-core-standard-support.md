@@ -22,19 +22,19 @@ The release notes are also found on [GitHub](https://github.com/dotnet-websharpe
 [Questions](https://forums.websharper.com/forum/all), [issue reports](https://github.com/dotnet-websharper/core/issues) and [contributions](https://github.com/dotnet-websharper/core/pulls) are welcome.
 You can also report issues and contribute to the documentation at the [dotnet-websharper/docs](https://github.com/dotnet-websharper/docs) repository.
 
-# Enhancements
+## Enhancements
 
-## .NET Standard and .NET Core support
+### .NET Standard and .NET Core support
 
 This is the first version of WebSharper compiled for .NET Standard 2.0, and therefore compatible with .NET Core 2.0.
 
 The compiler itself still runs on .NET Framework, due to the F# compiler's current limitations in particular when dealing with type providers. So having .NET 4.6.1 or Mono installed on development machine is still required; however the runtime is 100% .NET Standard 2.0 compatible.
 
-## ASP.NET Core support
+### ASP.NET Core support
 
 WebSharper can now run on top of ASP.NET Core thanks to [WebSharper.AspNetCore](https://github.com/dotnet-websharper/aspnetcore). The server-side runtime, including Sitelets as well as RPC functions, can be run on top of ASP.NET Core. 
 
-## C# and F# `dotnet` project templates
+### C# and F# `dotnet` project templates
 
 Templates for .NET Core are now available for both C# and F#. They can be installed with the following command:
 
@@ -56,7 +56,7 @@ By default, the project is named based on current folder. Add the `-n ProjectNam
 
 Use `dotnet run` after creating a web, SPA or Html template to immediately see it compile and run. Web and SPA uses Kestrel, while Html opens up an Explorer window for the output folder. 
 
-## Build configuration via `wsconfig.json` file
+### Build configuration via `wsconfig.json` file
 
 If a `wsconfig.json` file is found next to a WebSharper project, build settings are read from it, overriding project variable setting if one exists in both places. Existing project variables all have equivalents: these are
 
@@ -73,8 +73,8 @@ New settings:
 * `"JavaScript"`: emulate usage of `JavaScript` attribute on assembly level, allowing compiling full projects/files without annotating in source.
 * `"JSOutput"`/`"MinJSOutput"`: write out `.js`/`.min.js` to given file paths.
 
-# Breaking changes
+## Breaking changes
 
-## .NET 4.6.1
+### .NET 4.6.1
 
 In parallel to the new .NET Standard 2.0, the minimum requirement for running WebSharper on the .NET Framework has been bumped to v4.6.1.

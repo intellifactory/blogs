@@ -12,12 +12,14 @@ Documentation: [WebSharper 4.1 for C#](http://developers-test.websharper.io/docs
 
 The release notes are also found on [GitHub](https://github.com/dotnet-websharper/websharper/releases/tag/4.1.6.207).
 
-# Bundling 
+## Bundling 
+
 * Bundle project output is now generated quicker.
 * Also, if you have source mapping turned off (as default) and dead code elimination too (with `<WebSharperDeadCodeElimination>False</WebSharperDeadCodeElimination>`) then bundling will just concatenate already compiled JavaScript output for referenced assemblies instead of rewriting to a single scope, resulting in faster compilation speed.
 * You can use the new project type value `<WebSharperProject>BundleOnly</WebSharperProject>` to have only the `.js`/`.css`/`.html` output for bundle projects. In the case of F#, this means that only a dummy `.dll` is created. For C#, the `.dll` is just not touched, it will contain no WebSharper-specific resources. This allows faster iterative development on bundle projects. Do not use `BundleOnly` if any other projects are referencing the current project. Most time is gained if that project itself (and not just references) contain large amount of code.
 
-# Fixes/improvements
+## Fixes/improvements
+
 * More `DateTimeOffset` members now usable client-side. Both RPCs and custom JSON serialization are supporting `DateTimeOffset` values, in a way that is also cross-compatible with serialized `DateTime` values.
 * F# module-level pattern matching with `let` now translates successfully. For example: `let a, b = 1, 2`
 * `Sitelet.InferWithCustomErrors` and `Router.InferWithCustomErrors` work as intended (previously was throwing a null exception).

@@ -26,6 +26,7 @@ See [documentation](http://websharper.com/docs/source-mapping).
 an experimental feature. See [documentation](http://websharper.com/docs/ts-output).
 
 ### Bug fixes
+
 * [#374](https://github.com/intellifactory/websharper/issues/374):
 `WebSharper.JavaScript.X` now throws a `ClientSideOnly` exception
 when called from .NET code.

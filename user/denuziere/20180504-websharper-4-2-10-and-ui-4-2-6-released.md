@@ -10,26 +10,26 @@ Install templates for .NET Core SDK: `dotnet new -i WebSharper.Templates::4.2.10
 
 Download templates for Visual Studio 2017: http://websharper.com/installers/WebSharper.4.2.10.234.vsix
 
-# WebSharper Core
+## WebSharper Core
 
-## Improvements
+### Improvements
 
 * [#943](https://github.com/dotnet-websharper/core/issues/943) New option for `DownloadResources`: `WarnOnly`.
     * `true` tries to download resources, and throws an error if it fails.
     * `WarnOnly` tries to download resources, and shows a warning if it fails.
     * `false` does not download resources.
 
-## Fixes
+### Fixes
 
 * [#940](https://github.com/dotnet-websharper/core/issues/940) Inferred sitelet: "GET /" union case prevents other cases from being parsed
 
-# WebSharper UI
+## WebSharper UI
 
-## Improvements
+### Improvements
 
 * [#171](https://github.com/dotnet-websharper/ui/issues/171) Templating: Support writing `<ws-*>` template instantiations from the server side with `.Doc(keepUnfilled = true)`, so that these instantiations can be applied on the client side.
 
-# Fixes
+## Fixes
 
 * [#170](https://github.com/dotnet-websharper/ui/issues/170) Templating: Fix issue that prevented applying `<ws-*>` instantiation for a template declared later in the file in `ClientLoad.FromDocument` mode.
 * [#176](https://github.com/dotnet-websharper/ui/issues/176) Routing: Recognize relative `href` path when parsing clicked links to apply client-side routing.
