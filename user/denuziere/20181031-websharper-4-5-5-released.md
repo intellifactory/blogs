@@ -48,7 +48,7 @@ Full release notes:
 
 ## WebSharper.UI
 
-## Features
+### Features
 
 * [#175](https://github.com/dotnet-websharper/ui/issues/175) `<ws-*>` template instantiation is now implemented on the server side.
 * [#200](https://github.com/dotnet-websharper/ui/issues/200) Server-side templating: `Var<string>` holes are fully bound on the client side, including dynamically bound to `${Text}` holes with the same name in the same template.
@@ -59,8 +59,7 @@ Full release notes:
     * `DynamicTemplate` holes can only be filled with `.With()`.
     * `DynamicTemplate` instantiation can only be finished with `.Doc()`.
 
-## Fixes
-
+### Fixes
 
 * [#187](https://github.com/dotnet-websharper/ui/issues/187) C# templating: the build task doesn't write the generated C# file if it would be identical to the existing file. This makes it possible to use a file system watcher such as `dotnet watch` without running into an infinite loop.
 

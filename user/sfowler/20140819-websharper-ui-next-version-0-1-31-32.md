@@ -1,7 +1,7 @@
 ---
 title: "WebSharper UI.Next Version 0.1.31.32"
 categories: "ui.next,f#,websharper"
-abstract: "Websharper UI.Next Version 0.1.31.32 has been released, with bugfixes, and new event & animation functionality."
+abstract: "WebSharper UI.Next Version 0.1.31.32 has been released, with bugfixes, and new event & animation functionality."
 identity: "4008,77371"
 ---
 WebSharper UI.Next Version 0.1.31.32 has been released on NuGet for your experimentation.

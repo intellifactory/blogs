@@ -74,4 +74,4 @@ There are a couple major features planned for the final release sometime in 2017
 
 Feedback and questions are welcome at the [WebSharper forums](http://websharper.com/questions) and issue reports on [GitHub](https://github.com/intellifactory/websharper/issues).
 
-#### Happy coding!
+Happy coding!

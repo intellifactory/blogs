@@ -22,9 +22,9 @@ Here is how to obtain WebSharper 4.3:
 
 Here are the full release notes:
 
-# WebSharper Core
+## WebSharper Core
 
-## Features
+### Features
 
 * [#941](https://github.com/dotnet-websharper/core/issues/941): Run the compiler on .NET Core.
 
@@ -52,7 +52,7 @@ Here are the full release notes:
 
     In an expression like `let y = x + 1 in macroedFunction y`, this allows the macro to retrieve and manipulate the expression `x + 1`, rather than just seeing `y`.
 
-## Fixes
+### Fixes
 
 * [#963](https://github.com/dotnet-websharper/core/issues/963) Add missing proxies for F# numeric conversion functions: `int8`, `byte`, `int16`, `uint16`, `uint32`, `uint64`, `double`.
 
@@ -62,9 +62,9 @@ Here are the full release notes:
 
 * [#969](https://github.com/dotnet-websharper/core/issues/969): Include inherited C# auto-property backing field in remoting.
 
-# WebSharper UI
+## WebSharper UI
 
-## Features
+### Features
 
 * Enable the templating type provider to run on the new .NET Core-compiled WebSharper compiler.
 

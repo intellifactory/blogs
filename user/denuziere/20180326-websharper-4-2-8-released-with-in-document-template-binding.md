@@ -11,7 +11,7 @@ Install project templates for this release:
 * with the .NET Core SDK: `dotnet new -i WebSharper.Templates::4.2.8.227`
 * [in Visual Studio 2017](http://websharper.com/installers/WebSharper.4.2.8.227.vsix)
 
-# In-document template binding
+## In-document template binding
 
 The main highlight of this release is a WebSharper.UI feature called **in-document template binding**.
 
@@ -48,9 +48,9 @@ For a more comprehensive example, you can also check [Adam's new getting started
 
 The above example uses `Bind()` in an SPA project, which is the most typical use case. But it is also possible to use it in a client-server application, where the server side uses the same template, potentially binding some holes itself. For this, you need to add the parameter `keepUnfilled = true` to your server-side `.Doc()` instantiation. Otherwise, all unbound holes would be removed by the server-side rendering engine, and there would be nothing left to bind on the client.
 
-# Full changes
+## Full changes
 
-## Features
+### Features
 
 * [ui#161](https://github.com/dotnet-websharper/ui/issues/161) Add `.Bind() : unit` template terminating method to directly bind holes to the current document. This is available on the client-side only if the template is declared with `ClientLoad.FromDocument`.
 
@@ -70,10 +70,10 @@ The above example uses `Bind()` in an SPA project, which is the most typical use
 
     // Extension on Var<FSharpList<T>>:
     Doc DocLens(Func<T, K> key, Func<K, Var<T>, Doc> f);
-    ````
+    ```
 
-## Fixes
+### Fixes
 
 * [#931](https://github.com/dotnet-websharper/core/issues/931) Add downwards assembly redirects. This fixes an assembly load failure when a non-WebSharper-compiled referenced assembly uses FSharp.Core > 4.4.1.0.
 
-# Happy coding!
+Happy coding!

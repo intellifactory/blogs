@@ -12,7 +12,7 @@ Install the latest project template with:
 dotnet new -i Bolero.Templates
 ```
 
-# HTML Hot reloading
+## HTML Hot reloading
 
 Version 0.3 brings HTML hot reloading to Bolero. You can now run your application in debug mode and see changes to your HTML templates instantly.
 

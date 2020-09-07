@@ -10,18 +10,18 @@ Install templates for .NET Core SDK: `dotnet new -i WebSharper.Templates::4.5.2.
 
 Download templates for Visual Studio 2017: http://websharper.com/installers/WebSharper.4.5.2.275.vsix
 
-# WebSharper
+## WebSharper
 
-## Features
+### Features
 
 * [#1020](https://github.com/dotnet-websharper/core/issues/1020): `Sitelets.HttpModule` now throws an error if no Sitelet definition is found.
 * [#1022](https://github.com/dotnet-websharper/core/issues/1022): Update to FSharp.Compiler.Service 25.0.1
 
-## Fixes
+### Fixes
 
 * [#1023](https://github.com/dotnet-websharper/core/issues/1023): Fix HTML escaping in `HtmlTextWriter`. This affects functions such as `text` and `attr.*` in WebSharper.UI.
 
-# WebSharper.AspNetCore
+## WebSharper.AspNetCore
 
 WebSharper.AspNetCore now has a more idiomatic API and makes it easier to add your code to the dependency injection graph.
 
@@ -140,9 +140,9 @@ The new API is as follows:
 
 The old API is still available but marked as obsolete.
 
-# WebSharper.UI
+## WebSharper.UI
 
-## Features
+### Features
 
 * [#192](https://github.com/dotnet-websharper/ui/issues/192) Add the ability to instantiate a template from a string.
 

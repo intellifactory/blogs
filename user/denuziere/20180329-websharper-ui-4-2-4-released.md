@@ -8,7 +8,7 @@ We are happy to announce the release of [WebSharper.UI 4.2.4](https://www.nuget.
 
 This is a minor feature release of WebSharper.UI, out-of-band from WebSharper.
 
-# Features
+## Features
 
 * [#163](https://github.com/dotnet-websharper/ui/issues/163) Allow using the `on.afterRender` attribute, the `Elt.OnAfterRender()` method and the `ws-onafterrender` template hole from the server side just like other event handlers.
 
@@ -36,7 +36,7 @@ This is a minor feature release of WebSharper.UI, out-of-band from WebSharper.
         .Doc()
     ```
 
-# Fixes
+## Fixes
 
 * [#138](https://github.com/dotnet-websharper/ui/issues/138) Fix an exception thrown when editing a template file while the application is running and `serverLoad` is set to `ServerLoad.WhenChanged`.
 

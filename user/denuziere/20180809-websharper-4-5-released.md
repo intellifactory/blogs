@@ -36,20 +36,20 @@ If you do need to use the `Elt` API on an element, such as `.Dom` to retrieve th
 
 Full change list:
 
-# WebSharper
+## WebSharper
 
-## Features
+### Features
 
 * [#1001](https://github.com/dotnet-websharper/core/issues/1001): Strongly-name the .NET Standard core libraries.
 * [#1002](https://github.com/dotnet-websharper/core/issues/1002): Added `--jsoutput` and `--minjsoutput` command line options, as well as `WebSharperJsOutput` and `WebSharperMinJsOutput` project properties, as equivalents to `jsOutput` and `minJsOutput` `wsconfig.json` options.
 
-## Fixes
+### Fixes
 
 * [#1000](https://github.com/dotnet-websharper/core/issues/1000): Compiling in `BundleOnly` mode correctly detects compile errors.
 
-# WebSharper UI
+## WebSharper UI
 
-## Features and breaking changes
+### Features and breaking changes
 
 * [#183](https://github.com/dotnet-websharper/ui/issues/183): [F#] In order to minimize the number of upcasts needed in user code, the following functions now return values of type `Doc` instead of `Elt`:
 
@@ -64,7 +64,7 @@ Full change list:
     * A new module `WebSharper.UI.Html.SvgElements.Elt`, containing `Elt`-returning equivalents to the functions in `WebSharper.UI.Html.SvgElements`.
     * A new module `WebSharper.UI.Client.Elt`, containing `Elt`-returning equivalents to the functions in `WebSharper.UI.Client.Doc`.
 
-# Fixes
+## Fixes
 
 * [#112](https://github.com/dotnet-websharper/ui/issues/112): Pass the correct `Dom.Element` as argument to an `.OnAfterRender()` called on a template's `.Elt()`.
 * [#185](https://github.com/dotnet-websharper/ui/issues/185): Fix setting the class of an SVG element.

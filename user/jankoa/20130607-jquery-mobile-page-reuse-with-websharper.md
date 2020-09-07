@@ -1,5 +1,5 @@
 ---
-title: "jQuery Mobile page reuse with Websharper"
+title: "jQuery Mobile page reuse with WebSharper"
 categories: "jquerymobile,f#,websharper"
 abstract: "Sample jQuery mobile single-page application with dynamically created and reused pages using WebSharper"
 identity: "3362,76642"

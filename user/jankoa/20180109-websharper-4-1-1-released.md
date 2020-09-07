@@ -12,7 +12,8 @@ Documentation: [WebSharper 4.1 for C#](http://developers-test.websharper.io/docs
 
 The release notes are also found on [GitHub](https://github.com/dotnet-websharper/websharper/releases/tag/4.1.1.175).
 
-# New features
+## New features
+
 * Server-side event handlers (`on.*`) and `ClientSide` can take any fixed F# quotation now and translates it to JavaScript.
 
 ```fsharp
@@ -34,7 +35,7 @@ client
     if IsClient then ClientSideMethod() else ServerSideMethod()
 ```
 
-# New features in WebSharper.UI
+## New features in WebSharper.UI
 
 * Added `Lens` function to lens into a `Var` using the `.V` syntax. Example usage:
 
@@ -69,7 +70,8 @@ let editPeople =
 
    This ties the inputs to the values in `people.Value` (of type `list<Person>`), recreating the immutable list if any of the inputs are changed.
 
-# Fixes and improvements
+## Fixes and improvements
+
 * An empty F# `Map` passed to an RPC function is deserialized correctly.
 * The behavior of the `Stub` attribute on constructors and static methods are now consistent with the [documented translation logic](https://developers.websharper.com/docs/v3.x/fs/attributes) since WebSharper 3.0.
 * Multiple server-side event handlers and `ClientSide` having captured arguments within the same method do not interfere with each other.

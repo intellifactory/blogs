@@ -14,14 +14,16 @@ The release notes are also found on [GitHub](https://github.com/dotnet-websharpe
 
 See associated WebSharper.UI release notes [here](https://github.com/dotnet-websharper/ui/releases/tag/4.5.8.161).
 
-# Fixes
+## Fixes
+
 * Assembly version mismatch in package WebSharper.FSharp, causing build fauilures.
 
-# Enhancements
+## Enhancements
+
 * Added client-side support for anonymous F# records.
 * UI Templating: add a new attribute `ws-preserve.` When an element is marked with this attribute, it and its children are not parsed for holes and `ws-*` attributes.
 
-## Anonymous records
+### Anonymous records
 
 F# anonymous records are now fully usable in client-side code. They are translated to plain JS objects:
 
@@ -43,7 +45,7 @@ See it live [here](http://try.websharper.com/snippet/JankoA/0000NK):
 
 [![Imgur](https://i.imgur.com/G0cDYLu.jpg)](http://try.websharper.com/snippet/JankoA/0000NK)
 
-## Opt out of templating transformations
+### Opt out of templating transformations
 
 By default a `${Name}` in a WebSharper.UI template file is treated as a hole to be filled. Including this verbatim is now made easier with new attribute `ws-preserve` that excludes children of current node from being interpreted for template holes and `ws-` attributes and nodes.
 

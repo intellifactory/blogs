@@ -10,9 +10,9 @@ Install templates for .NET Core SDK: `dotnet new -i WebSharper.Templates::4.4.1.
 
 Download templates for Visual Studio 2017: http://websharper.com/installers/WebSharper.4.4.1.261.vsix
 
-# WebSharper
+## WebSharper
 
-## Features
+### Features
 
 * [#988](https://github.com/dotnet-websharper/core/issues/988) Add proxy for the JavaScript `fetch` API.
 * [#988](https://github.com/dotnet-websharper/core/issues/988) Add `Router.Fetch` as a fetch-based equivalent to `Router.Ajax`.
@@ -37,7 +37,7 @@ Download templates for Visual Studio 2017: http://websharper.com/installers/WebS
     ```
 
 
-## Fixes
+### Fixes
 
 * [#985](https://github.com/dotnet-websharper/core/issues/985) Fix reading C# tuple type signatures, this also fixes remoting with tuples in C#.
 * [#989](https://github.com/dotnet-websharper/core/issues/989) RPC signature verification works as intended: compiler attempts to create JSON de/serializers, if there is any unsupported types found, a compile-time error is given.
@@ -49,9 +49,9 @@ Download templates for Visual Studio 2017: http://websharper.com/installers/WebS
 * [#997](https://github.com/dotnet-websharper/core/issues/997) Add proxy for `Printf.kprintf`.
 * [#998](https://github.com/dotnet-websharper/core/issues/998) Don't serialize System.UI.Web.Control's private fields. Since the Serializable attribute requirement was dropped in 4.4.0, web controls would output a number of null fields in the `<meta>` tag; this is now fixed.
 
-# WebSharper UI
+## WebSharper UI
 
-## Fixes
+### Fixes
 
 * [#181](https://github.com/dotnet-websharper/ui/issues/181) `Elt.WithAttrs` is no longer public, it was intended to be internal.
 * [#181](https://github.com/dotnet-websharper/ui/issues/181) `Elt.RemoveClass` removes unneeded spaces from `class` attribute value.
