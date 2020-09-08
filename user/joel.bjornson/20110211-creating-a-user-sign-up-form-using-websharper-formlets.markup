@@ -1,6 +1,0 @@
----
-title: "Creating a user sign-up form using WebSharper Formlets"
-categories: "f#"
-abstract: "In this post I'll highlight some of the features of WebSharper formlets by implementing a user sign-up form."
-identity: "1907,74739"
----
