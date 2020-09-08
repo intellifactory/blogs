@@ -4,7 +4,61 @@ categories: "blogging"
 abstract: ""
 identity: "-1,-1"
 ---
+## Metainfo
+
+Use double-quotes (`"`) around the field values in the YAML header. You can escape double quotes with `\"` if you need them in the text.
+
+```
+---
+title: "Writing \"instructions\"."
+categories: "blogging,notes"
+abstract: "Notes about formatting blog articles."
+identity: "-1,-1"
+---
+```
+ 
+## Do
+
+ * ... use **empty lines around** headings, paragraphs, lists/enumerations, list items if they are complex, code blocks, quotes, and other block elements.
+ * ... consider using an **extra empty line** before a new block, especially if the previous block has nested items.
+ * ... **indent list items** with a single space, following four (4) spaces per each indentation level.
+ * ... use `https` in hrefs if possible
+
+## Don't
+
+ * ... use `<h1>` (or `# Some title`) for a heading, go from `h2`'s in your blog posts.
+
+
+## Editorial notes
+
+ * Mark **broken links/pictures** with a footnote, or a note block if they need further explanation and/or alternate links.
+
+ * **Link to other blog posts** using a relative link (to the blogs repo's root folder, starting with a `/`) to the `.md` file. Example:
+
+    `/user/granicz/20061124-a-logo-interpreter-under-400-lines.md`
+
+    Such links are then browseable in the repository and are also converted to `.html` links in the website.
+
+ * ...
+
+
+## Formatting
+
 This is a test paragraph.
+
+Styles: ~~strike through~~, ~subscript~ text, ^superscript^ text, ++inserted++ text, ==marked== text
+
+
+## Tables
+
+Right | Left | Default | Center
+-----:|:-----|---------|:-----:
+12    | 12   | 12      | 12
+123   | 123  | 123     | 123
+1     | 1    | 1       | 1
+
+
+## Lists
 
 Here is a bullet list:
 
@@ -28,58 +82,44 @@ Here is the same list as a numbered list:
 
 And now some text to test out different levels of heading:
 
-# Header 1
-
-This should be the biggest header that really stands out, not something we typically use.
+## Code
 
 ```fsharp
 let foo x = x+1
 let bar x = foo x + 1
 ```
 
-## Header 2
 
-This uses a somewhat smaller font. Here is another list just for fun:
+# Header 1
 
- 1. Plain text
- 2. `Fixed font` text
- 3. ```fsharp
-    let foo x = x+1
-    ```
- 4. **Bold text**
- 5. *Italics text*
+This is the biggest header, since it really stands out, don't use it in blog posts. We use it in other generated text where the largest header makes sense.
+
+## Header 2 {#header2}
 
 ### Header 3
 
- 1. Plain text
- 2. `Fixed font` text
- 3. ```fsharp
-    let foo x = x+1
-    ```
- 4. **Bold text**
- 5. *Italics text*
-
 #### Header 4
-
- 1. Plain text
- 2. `Fixed font` text
- 3. ```fsharp
-    let foo x = x+1
-    ```
- 4. **Bold text**
- 5. *Italics text*
-
 
 ##### Header 5
 
- 1. Plain text
- 2. `Fixed font` text
- 3. ```fsharp
-    let foo x = x+1
-    ```
- 4. **Bold text**
- 5. *Italics text*
+## Links
 
-### Other stuff
+This is a link to [Header 2](#header2).
+
+
+## Other stuff
 
 > Here is a blockquote. It should be rendered as a block of text that stands out.
+
+:::quote
+This is a quote.
+:::
+
+:::note
+This is a note.
+:::
+
+This is an example[^3] of a footnote.
+
+
+[^3]: An example footnote.
