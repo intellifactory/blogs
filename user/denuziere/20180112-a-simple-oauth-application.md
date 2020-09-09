@@ -4,7 +4,7 @@ categories: "authentication,oauth,websharper"
 abstract: "I wrote a simple template application that you can use as a base to create your own OAuth-based app."
 identity: "5493,84370"
 ---
-Following [my previous blog entry](https://forums.websharper.com/blog/84332) about WebSharper.OAuth, I wrote a simple template application that you can use as a base to create your own OAuth-based app. [Check out the source](https://github.com/dotnet-websharper/oauth-app), or [see it in action](http://websharperoauthexample.azurewebsites.net/).
+Following [my previous blog entry](/user/denuziere/20180109-password-less-authentication-with-websharper-oauth.md) about WebSharper.OAuth, I wrote a simple template application that you can use as a base to create your own OAuth-based app. [Check out the source](https://github.com/dotnet-websharper/oauth-app), or [see it in action](http://websharperoauthexample.azurewebsites.net/).
 
 ![Screenshot: login page](https://raw.githubusercontent.com/dotnet-websharper/oauth-app/e954327/OAuthExample/img/not-logged-in.png)
 
