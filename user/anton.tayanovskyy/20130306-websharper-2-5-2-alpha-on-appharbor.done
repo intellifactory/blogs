@@ -1,0 +1,12 @@
+---
+title: "WebSharper 2.5.2-alpha on AppHarbor"
+categories: "websharper,f#,appharbor"
+abstract: "Pre-release NuGet <a href=\"http://websharper.com\">WebSharper</a> 2.5.2-alpha NuGet package is available and can already be used to build <a href=\"http://appharbor.com\">AppHarbor</a>-ready sites.  Clone the sample application <a href=\"http://bitbucket.org/IntelliFactory/websharper-bootstrap-site\">websharper-bootstrap-site</a> to build your own cloud-based WebSharper site."
+identity: "3054,76218"
+---
+Pre-release <a href="http://websharper.com">WebSharper</a> 2.5.2-alpha NuGet package is available and can already be used to build <a href="http://appharbor.com">AppHarbor</a>-ready sites. AppHarbor is an attractive execution environment for WebSharper apps: its provides a free basic option, and builds and executes your code in the cloud (using Amazon EC2).  The basic option does not come with default permanent storage, but we found that combining it with <a href="http://windowsazure.com">Windows Azure</a> storage service is entirely viable. Small projects will incur 0 monthly cost because of Azure free storage quota.
+
+Up until now, running WebSharper on AppHarbor without committing the binaries has been a bit quirky. This is finally resolved, and here is a sample ready-to-clone application:
+<a href="http://bitbucket.org/IntelliFactory/websharper-bootstrap-site">websharper-bootstrap-site</a>.  We are now finalizing testing the 2.5 WebSharper release and working on preparing a matching extensions release.  In the meanwhile, you can already try to start your own cloud-based WebSharper site with AppHarbor and the alpha package.
+
+Your comments and suggestions on how to improve the app are very welcome.

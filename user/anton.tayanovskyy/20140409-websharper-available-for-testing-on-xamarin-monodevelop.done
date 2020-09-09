@@ -1,0 +1,25 @@
+---
+title: "WebSharper available for testing on Xamarin & MonoDevelop"
+categories: "websharper,f#,monodevelop,mono,xamarin"
+abstract: "WebSharper development gains support for Mono framework on Linux and Mac OS X, and integration with Xamarin Studio and MonoDevelop. The preview add-in is available for testing at <a href=\"https://github.com/intellifactory/monodevelop.websharper\">intellifactory/monodevelop.websharper</a>"
+identity: "3803,77123"
+---
+WebSharper development gains support for Mono framework on Linux and Mac OS X, and integration with Xamarin Studio and MonoDevelop. The preview add-in is available for testing at <a href="https://github.com/intellifactory/monodevelop.websharper">intellifactory/monodevelop.websharper</a>
+
+What you get:
+
+<ul>
+  <li>Ability to develop WebSharper projects on Linux and Mac OS X</li>
+  <li>A viable IDE alternative to Visual Studio for WebSharper projects</li>
+</ul>
+
+What we have done:
+
+<ul>
+  <li>Worked around a bunch of xbuild bugs by rewriting WebSharper build logic from MSBuild XML to MSBuild tasks, this seems to work reliably on both Mono/xbuild and .NET/MSBuild</li>
+  <li>Created an add-in for MonoDevelop and Xamarin Studio that is able to create instances of WebSharper templates</li>
+</ul>
+
+There are some remaining issues with Web project support, especially F#/Web projects integration into the IDE, but the projects are working with <b>xsp4</b>.
+
+In the near future, we plan to push this further and hope to fully support cross-platform development of OWIN-based Web projects in F#/WebSharper that would allow hosting performant websites directly in-process, rather than relying on ASP.NET xsp4 emulation.

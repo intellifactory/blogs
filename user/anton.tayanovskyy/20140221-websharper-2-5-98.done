@@ -1,0 +1,13 @@
+---
+title: "WebSharper 2.5.98"
+categories: "websharper,f#"
+abstract: ""
+identity: "3742,77069"
+---
+This release brings asynchronous sitelets, brings back support for targeting .NET 4.0 - 4.5.1, and offers several bug fixes.
+
+By popular demand, we have downgraded the WebSharper stack to work well on .NET 4.0, while also working with .NET 4.5 and 4.5.1. Both F# 3.0 and F# 3.1 are now supported.
+
+Thanks to @Oenotria, WebSharper sitelets now support fully asynchronous execution, hooking into asynchronous API as an IIS handler.
+
+Release notes: https://github.com/intellifactory/websharper/blob/master/docs/ReleaseNotes.md

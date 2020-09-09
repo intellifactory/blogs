@@ -1,0 +1,78 @@
+---
+title: "WebSharper.UI.Next: Declarative Animation"
+categories: "websharper,f#,d3,visualization,animation"
+abstract: "Learning from and going beyond D3.js to make animation scheduling declarative, in the context of WebSharper UI.Next.."
+identity: "3964,77306"
+---
+I have joined the legion of Mike Bostock fans, admiring his work on <a href="http://d3js.org">D3.js</a>.  You should, too.  Check out the beautiful data visualizations, and be amazed how much your browser can do.
+
+We are now hard at work with <a href="https://twitter.com/Simon_JF">Simon Fowler</a> to match this functionality in <a href="http://github.com/intellifactory/websharper.ui.next">WebSharper</a>.  The improvements we are seeking are in the area of code clarity.  The holy grail is finding a way to write visualizations that look just as beautiful as their D3 counterparts, but are also easier to read and modify to suit your needs.
+
+Here is how our current efforts look like.
+
+<a href="http://intellifactory.github.io/websharper.ui.next/#ObjectConstancy">ObjectConstancy sample</a>
+
+We looked closely at how D3 examples are built. In a nutshell:
+
+1. D3 uses SVG to do the graphics
+
+2. It provides a wealth of coordinate transformation functions
+
+3. There is the idea of "joining" elements to data
+
+4. Animation is done by interpolating between two values and this is scheduled imperatively
+
+The basic ideas are excellent.  The rougher parts are that D3 manipulates DOM in imperative JQuery style, and leaves the user to specify control flow, often even relying on a manual event loop.
+
+It works great when it does.  When it does not, it is a mine field of things that can go wrong, wrong element sets being selected, wrong effect ordering, wrong function context.  Not a problem for simple examples, but cost me hours trying to tinker.  Perhaps that is just a beginner's fate, but I wonder if a better approach is possible.
+
+In WebSharper.UI.Next we already have a better way to deal with control flow and DOM manipulation - reactive documents.  There is an all-powerful Doc type and a reactive layer that work together:
+
+<code lang="fsharp">
+val EmbedDoc : View<Doc> -> Doc
+</code>
+
+There are reactive attributes too, attributes that are implicilty time-varying.
+
+So how about animation?  Our basic idea was this: instead of scheduling animation directly, we allow specifying animated attributes:
+
+<code lang="fsharp">
+Attr.Animated : name: string -> Trans<'T> -> View<'T> -> ('T -> string) -> Attr
+</code>
+
+An animated attribute is an extension of a time-varying attribute that animates any change in the underlying value.  Trans (transition) value specifies how to construct an animation for a change between two levels, and also, optionally, for adding or removing elements to the document.
+
+While not as flexible as the more general imperative approach, we find declarative animated attributes quite freeing, as animation scheduling is entirely implicit and does what you mean automatically.
+
+You can see this functionality in action in our on-going <a href="http://intellifactory.github.io/websharper.ui.next/#ObjectConstancy">transcription</a> of an interesting D3 example.
+
+Another good aspect of animation systems we found advocated by D3 is managing object identity.  There is the basic principle of "object constancy" that dictates that identical logical elements should be mapped to identical visual elements, and this identity visually preserved, to help the viewer perceive the relationship.
+
+On a lower level, in terms of code in a reactive dataflow system, this if often discussed in terms of "key" functions.  At first I prematurely dismissed this concept, thinking it is just another way of saying we care about equality on a given type, and specify it by projecting to a different type.  However, it turns out there is a little more to it, specifically, it is a nice way to recover fine-grain object changes from coarse-grain collection changes.
+
+Our current understanding of the "key" function lore is expressed in this combinator:
+
+<code lang="fsharp">
+    View.ConvertSeqBy<'A,'B,'K when 'K : equality> :
+        key: ('A -> 'K) ->
+        conv: (View<'A> -> 'B) ->
+        view: View<seq<'A>> ->
+        View<seq<'B>>
+</code>
+
+Suppose you have a geometric point type, Point; then a collection of them, of type <c>seq<Point></c>.  An object of type <c>View<seq<Point>></c> is a time-varying collection, however it is not terribly useful as it does not discriminate macro and micro change: points might be added or removed, but also individual points might change coordinates.  When mapping these logical points to graphical representations, we might have some trouble with object constancy.
+
+Without a combinator such as ConvertSeqBy, we could change our design to propagate micro and macro change separately, which would be reflected in the types, for example like this:
+
+<code lang="fsharp">
+type Point = { X: View<double>; Y: View<double> }
+val Points : View<seq<Point>>
+</code>
+
+While working, this approach frequently feels heavy-handed.  Luckily, once we have a key function <c>Point -> int</c> (and associated identity on Point), we can distinguish macro and micro changes while keeping a simple immutable Point type.  <c>ConvertSeqBy</c> does that, and propagates the changes to the given "conv" function in a nice way.  Whenever a Point is added, "conv" is called to obtain a new graphical representation.  When the same point has changed, the function is not called, but the change is propagated via the associated View.  In this manner, the range of our "conv" function is permitted to use identity and some hidden state to enhance the visual presentation.  Object constancy is taken care of by the combinator.
+
+You might wonder why object identity matters for just drawing some circles for every point, what if we just draw from scratch?  But it does matter with declarative animation! To interpolate between two positions of the circle, we need to know it is the same circle.
+
+In the end we were very pleased when the two fairly orthogonal features, declarative animations and ConvertSeqBy worked together as-expected in our example.  Compared to the D3 original, we are still lacking some features, but our code eliminated imperative scheduling, and composes easily.  A little victory.
+
+This we will be working with Simon specifically to improve documentation and examples.  We are finally putting a lid on feature creep.  Our big hope is to significantly lower the bar for animating UI.  This is essential to making sure animation is done more often, and the end users, on average, are happier.
