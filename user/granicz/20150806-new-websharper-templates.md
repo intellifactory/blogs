@@ -4,7 +4,7 @@ categories: "templates,f#,websharper"
 abstract: "The recent release of WebSharper 3.4 also brought an update to most of the project templates shipped for Visual Studio, MonoDevelop, and Xamarin Studio."
 identity: "4425,79908"
 ---
-The [recent release of WebSharper 3.4](http://websharper.com/blog-entry/4422/websharper-3-4-released) also brought an update to most of the project templates shipped for Visual Studio, MonoDevelop, and Xamarin Studio.
+The [recent release of WebSharper 3.4](/user/denuziere/20150803-websharper-3-4-released.md) also brought an update to most of the project templates shipped for Visual Studio, MonoDevelop, and Xamarin Studio.
 
 As a quick glance, here is the template client-server (both UI.Next and the older Html type) application, with two simple pages (Home and About), demonstrating how to use master templates and how to make client-server calls.
 

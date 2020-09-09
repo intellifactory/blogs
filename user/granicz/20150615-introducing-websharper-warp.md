@@ -92,7 +92,7 @@ do Warp.RunAndWaitForInput(MySite) |> ignore
 
 ### Adding client-side functionality
 
-Warp applications can easily incorporate client-side content and functionality, giving an absolute edge over any web development library. The example below is reimplemented from [Deploying WebSharper apps to Azure via GitHub](http://websharper.com/blog-entry/4368), and although it omits the more advanced templating in that approach (which is straightforward to add to this implementation), it greatly simplifies constructing and running the application.
+Warp applications can easily incorporate client-side content and functionality, giving an absolute edge over any web development library. The example below is reimplemented from [Deploying WebSharper apps to Azure via GitHub](/user/granicz/20150515-deploying-websharper-apps-to-azure-via-github.md), and although it omits the more advanced templating in that approach (which is straightforward to add to this implementation), it greatly simplifies constructing and running the application.
 
 ```fsharp
 module Server =

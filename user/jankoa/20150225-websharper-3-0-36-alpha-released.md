@@ -18,7 +18,7 @@ Its dependency, `IntelliFactory.Reactive` is in another new package `IntelliFact
 
 ## JSON Sitelets
 
-You can now create REST APIs easily by using F# types. See [previous announcement](websharper.com/blog-entry/4231).
+You can now create REST APIs easily by using F# types. See [previous announcement](/user/denuziere/20150213-upcoming-in-websharper-3-0-serving-rest-apis-easy-as-pie.md).
 
 ## User Session in Sitelets and Rpc functions
 

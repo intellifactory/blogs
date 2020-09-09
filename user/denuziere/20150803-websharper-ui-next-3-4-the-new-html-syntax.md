@@ -6,7 +6,7 @@ identity: "4423,79893"
 ---
 As its name suggests, UI.Next was created to be the next-generation standard library for UI programming in WebSharper. As a consequence, as of WebSharper 4.0, **UI.Next will be merged into WebSharper itself** under a less "codenamey" moniker that we haven't decided yet. It will completely obsolete the current Html.Client and Html.Server.
 
-The [recently released version 3.4](http://websharper.com/blog-entry/4422/websharper-3-4-released) prepares the terrain for this merger. It streamlines the embedded markup syntax, introduces server-side capability and adds client-side functionality.
+The [recently released version 3.4](/user/denuziere/20150803-websharper-3-4-released.md) prepares the terrain for this merger. It streamlines the embedded markup syntax, introduces server-side capability and adds client-side functionality.
 
 ## Streamlined syntax
 

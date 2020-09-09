@@ -4,7 +4,7 @@ categories: "trywebsharper,f#,websharper"
 abstract: "Just four days ago we released Try WebSharper, and here we go with the first feature enhancement: embedding snippets. A huge thanks to Don Syme for suggesting it."
 identity: "4426,79915"
 ---
-Just [four days ago](http://websharper.com/blog-entry/4424/introducing-try-websharper) we released [Try WebSharper](http://try.websharper.com), and here we go with the first feature enhancement: embedding snippets. A huge thanks to [Don Syme](https://twitter.com/dsyme) for [suggesting it](https://twitter.com/dsyme/status/628624300661149696).
+Just [four days ago](/user/granicz/20150804-introducing-try-websharper.md) we released [Try WebSharper](http://try.websharper.com), and here we go with the first feature enhancement: embedding snippets. A huge thanks to [Don Syme](https://twitter.com/dsyme) for [suggesting it](https://twitter.com/dsyme/status/628624300661149696).
 
 Each snippet and example now has an Embed tab, giving you the links or the HTML code for embedding it:
 

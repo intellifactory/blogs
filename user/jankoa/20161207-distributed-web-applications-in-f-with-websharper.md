@@ -15,7 +15,7 @@ Sometimes you need to talk to the server to be which is hosting the current appl
 We will look at the tools that WebSharper provides to achieve all this and some more using only F#.
 
 There is just a [fresh release](https://github.com/intellifactory/websharper/releases/tag/Zafir-4.0.151.28-beta5) of WebSharper 4 beta out which contains fixes for these features, be sure to grab `Zafir beta-5` packages from NuGet or get the Visual Studio installer for project templates [here](http://websharper.com/Zafir.FSharp.vsix).
-For a short introduction, read [The road to WebSharper 4](http://websharper.com/blog-entry/5203/the-road-to-websharper-4).
+For a short introduction, read [The road to WebSharper 4](/user/jankoa/20161207-the-road-to-websharper-4.md).
 
 ## WebSharper remoting
 

@@ -124,6 +124,6 @@ After that, here is a peek at what you can expect from future releases:
 
 * TypeScript declarations: we will be stabilizing the support for outputting `.d.ts` declarations for generated JavaScript modules, which was an experimental feature so far.
 * F# 4.0 support: as soon as F# 4.0 is finalized, we will provide proxies for the extended standard library.
-* Source mapping: we will improve the support for [source maps](//websharper.com/blog-entry/4146), in particular reduce the need for many-to-many mapping which several browsers have trouble with.
+* Source mapping: we will improve the support for [source maps](//user/jankoa/20141216-websharper-3-0-3-alpha-released.md), in particular reduce the need for many-to-many mapping which several browsers have trouble with.
 
 Happy coding!

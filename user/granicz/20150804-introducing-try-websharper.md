@@ -71,7 +71,7 @@ Here, you are opening `WebSharper.Html.Client` for accessing client-side HTML fu
 
 #### Using `WebSharper.UI.Next`
 
-If you followed our [recent announcements for WebSharper 3.4](http://websharper.com/blog-entry/4422/websharper-3-4-released), you will likely prefer to do the above via the more flexible [reactive HTML language](http://websharper.com/blog-entry/4423/websharper-ui-next-3-4-the-new-html-syntax) introduced via UI.Next.  Here is how that goes:
+If you followed our [recent announcements for WebSharper 3.4](/user/denuziere/20150803-websharper-3-4-released.md), you will likely prefer to do the above via the more flexible [reactive HTML language](/user/denuziere/20150803-websharper-ui-next-3-4-the-new-html-syntax.md) introduced via UI.Next.  Here is how that goes:
 
 ```fsharp
 open System

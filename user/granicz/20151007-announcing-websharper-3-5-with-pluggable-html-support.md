@@ -28,7 +28,7 @@ The previous HTML support (`Html.Client` and `Html.Server`) has moved to a [sepa
 
 ### WebSharper + Suave template
 
-Next to the recent [WebSharper.Suave announcement](http://websharper.com/blog-entry/4556/announcing-websharper-suave), WebSharper 3.5 now also ships a new project template for Visual Studio, MonoDevelop, and Xamarin Studio for running WebSharper applications on [Suave](http://suave.io).  This template implements the standard client-server WebSharper "sample" application, and is easy to modify to fit your needs for any full-stack F# web application running on Suave.
+Next to the recent [WebSharper.Suave announcement](/user/denuziere/20151001-announcing-websharper-suave.md), WebSharper 3.5 now also ships a new project template for Visual Studio, MonoDevelop, and Xamarin Studio for running WebSharper applications on [Suave](http://suave.io).  This template implements the standard client-server WebSharper "sample" application, and is easy to modify to fit your needs for any full-stack F# web application running on Suave.
 
 ![](http://i.imgur.com/sTlLbObl.png)
 

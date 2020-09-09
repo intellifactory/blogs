@@ -19,10 +19,10 @@ This sequence is more complicated than it needs to be because it has to work aro
 Armed with that, we quickly put together a similar deployment setup for WebSharper client-server apps (other types of WebSharper apps are equally possible.) This has the obvious advantage that:
 
  * It uses WebSharper, so you can add **client-side** (e.g. JavaScript) **functionality** as well and **write it in F#**.
- * It produces an ASP.NET app that serves fine in Azure **without the need to run a separate server process** like Suave.io (although you can also create [OWIN-based self-hosted WebSharper applications](http://www.websharper.com/blog-entry/4098) and run them as in Scott's scenario.)
+ * It produces an ASP.NET app that serves fine in Azure **without the need to run a separate server process** like Suave.io (although you can also create [OWIN-based self-hosted WebSharper applications](/user/granicz/20141113-self-hosted-websharper-application-template-available.md) and run them as in Scott's scenario.)
  * It no longer needs FAKE to compile F# apps or run F# scripts.
 
-Loic blogged the technical details in his [WebSharper: From Zero to an Azure-deployed Web Application](http://websharper.com/blog-entry/4367) article, using a WebSharper implementation/clone of the "2048" game.  I also put together a simpler template that you can use for client-server applications, and it's available in...
+Loic blogged the technical details in his [WebSharper: From Zero to an Azure-deployed Web Application](/user/denuziere/20150512-websharper-from-zero-to-an-azure-deployed-web-application.md) article, using a WebSharper implementation/clone of the "2048" game.  I also put together a simpler template that you can use for client-server applications, and it's available in...
 
 ## this [GitHub](https://github.com/intellifactory/ClientServer.Azure) repository
 
