@@ -74,7 +74,7 @@ First, note that I am showing an out-of-project design.html file in the WebAppli
             </tr>
             <tr>
                 <td colspan="2" id="footer">
-                    WebSharper™ demo by Adam Granicz, IntelliFactory.
+                    WebSharper demo by Adam Granicz, IntelliFactory.
                     Absolutely no warranty of any kind :)
                 </td>
             </tr>

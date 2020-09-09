@@ -1,0 +1,7 @@
+---
+title: "WebSharper Sitelets Continued: Developing a Blog Service"
+categories: "websharper,f#"
+abstract: "In this article we take WebSharper sitelets even further and develop a tiny engine for blogging, demonstrating the use of compositional routers and parameterized actions."
+identity: "1447,74657"
+---
+In this article we take WebSharper sitelets even further and develop a tiny engine for blogging, demonstrating the use of compositional routers and parameterized actions: <a href="http://t0yv0.blogspot.com/2011/01/websharper-sitelets-contd-developing.html">WebSharper Sitelets Cont’d: Developing a Blog Service</a>.

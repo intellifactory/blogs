@@ -1,0 +1,66 @@
+---
+title: "WebSharper 2.3"
+categories: "websharper,f#"
+abstract: "The WebSharper 2.3 release is out today."
+identity: "1444,74654"
+---
+<a href="http://websharper.com/">WebSharper 2.3</a> improves on the 2.2 version by using a safer deployment file layout, implementing parallel Async methods in JavaScript, adding new operators, and fixing several bugs.
+
+The deployment file layout in WebSharper 2.2 assumed that JavaScript and binary metadata files are deployed alongside WebSharper assemblies. This caused problems, in particular when these files were not being copied correctly. WebSharper 2.3 bundles these files as embedded resources, reducing the problem to conventional .NET deployment. Debug and release versions of JavaScript are now provided, with the choice being made at runtime depending on whether ASP.NET debugging is on or off.
+
+The F# method Async.Parallel and Async.StartChild are now available for use on the client. The implementation uses a cooperative round-robin scheduler. Thread cooperation happens on every bind in the Async workflow expressions.
+
+Constructing JavaScript object literals, getting and setting object fields in F# became easier with the addition of helper operators (#456):
+
+<code lang=fsharp>
+val New<'T> : seq<string*obj> -> 'T
+val ( => )  : string -> obj -> string * obj
+val ( ? )   : obj -> string -> 'T
+val ( ?<- ) : obj -> string -> obj -> unit
+</code>
+They make this code:
+<code lang=fsharp>
+let window = New<obj> ["height" => 640; "width" => 480]
+window?height <- window?height / 2
+</code>
+equivalent to:
+<code lang=javascript>
+var window = {height: 640, width: 480};
+window.height = window.height / 2;
+</code>
+The most important fixes include #453 that was breaking virtual folder deployments of sitelet-based applications, and multiple bugs related to metadata file handling that lead to compiler failures. The bug fixes include:
+<code>
+#339 [formlets] InitWith is not always effectful.
+#350 [templates] Template generator fails on HEAD placeholders.
+#368 [formlets] Formlet values triggered multiple times.
+#369 [compiler] Bundpe DEP and JS files with the DLL.
+#370 [compiler] Provide minified and unminified output.
+#379 [ide] VS 2010 Add-In failed to load.
+#404 [templates] Building template fails on Vista64.
+#406 [templates] HTML Application template fails on Vista64.
+#407 [installer] Uninstallation failure.
+#409 [sitelets] VS9 template fails to map '/'.
+#411 [installer] No menu shortcuts for samples.
+#413 [templates] Embedding text under Body tag fails.
+#414 [installer] Installation fails on Vista x64.
+#416 [sitelets] Authentication support for sitelets.
+#417 [collections] Fixed Map.remove.
+#421 [jquery] Upgraded to 1.6.1.
+#423 [compiler] Access denied error during compilation.
+#424 [sitelets] Sitelets should respect ASP.NET authentication.
+#426 [jquery-ui] Missing configurationfor range slider.
+#427 [jquery-ui] Make slider formlet allow multiple handlers.
+#430 [compiler] Failure to load reference assemblies.
+#432 [html] Incorrect rendering of BR tags.
+#433 [installer] Installation failure.
+#434 [html] Server-side HTML5 tags and attributes support.
+#435 [control] Parallel async methods support.
+#438 [formlets] Add 'class' configuration for form buttons.
+#445 [formlets] Add 'readonly' versions of formlets controls.
+#448 [formlets] Enhance.FormContainerConfiguration - bogus padding values.
+#449 [core] Runtime error on sequence expressions.
+#450 [core] F# ranges with negative steps do not work.
+#453 [sitelets] Sitelet routing gets confused by non-root deployments
+#456 [websharper]  Add support for dynamic operators
+</code>
+The details can be found at <a href="bugs.intellifactory.com">bugs.intellifactory.com</a>.

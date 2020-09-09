@@ -1,0 +1,19 @@
+---
+title: "WGET in F#"
+categories: "websharper,f#"
+abstract: ""
+identity: "1455,74665"
+---
+Once every while I have to remind myself that I can program, and that the task at hand can be automated. On the most recent occasion, I was trying to write down the dependency graph for Yahoo User Interface (YUI) modules, when it finally occurred to me that the dependencies are documented in source code, and the source code is available online. The task was doable within 30 lines of F#. I would like to share the fun part, implementing an asynchronous WGET, designed as a function from a URL to a string of its contents. With using the built-in Async.Parallel predicate on 30 or so requests constructed, I was able to observe a significant improvement in the program's responsiveness. It is nice to have .NET network libraries available at your fingertips. Even when their APIs are not exactly convenient, you can typically wrap them in a nice manner.
+
+<code lang=fsharp>
+    let Fetch (url: string) =
+        let read (response: System.Net.WebResponse) =
+            use reader = new System.IO.StreamReader(response.GetResponseStream())
+            reader.ReadToEnd()
+        async {
+            let request = System.Net.WebRequest.Create url
+            let! response = Async.FromBeginEnd(request.BeginGetResponse, request.EndGetResponse)
+            return read response
+        }
+</code>

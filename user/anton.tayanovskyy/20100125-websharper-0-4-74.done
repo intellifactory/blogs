@@ -1,0 +1,9 @@
+---
+title: "WebSharper 0.4.74"
+categories: "websharper,f#"
+abstract: ""
+identity: "1451,74661"
+---
+A <a href="http://intellifactory.com/products/wsp/Download.aspx">new release of WebSharper</a> (0.4.74) is made available for download today. It contains bugfixes, an improved RPC system that has been revised for optimal performance, and various improvements to the Formlets API. Formlet rendering configuration is now parameterized, allowing, for example, to alternate the row colors in formlet tables. Several new formlets (radio button groups and multi-select check boxes) have been added to the collection.
+
+We are currently working towards a major release scheduled on February 9. The new release will finalize the APIs and bring major improvements to WebSharper builds and error reporting.

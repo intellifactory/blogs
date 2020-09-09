@@ -31,15 +31,43 @@ identity: "-1,-1"
 
 ## Editorial notes
 
- * Mark **broken links/pictures** with a footnote, or a note block if they need further explanation and/or alternate links.
+ * Mark **broken links/pictures** with a footnote, or a note block if they need further explanation and/or alternate links. Example:
 
- * **Link to other blog posts** using a relative link (to the blogs repo's root folder, starting with a `/`) to the `.md` file. Example:
+    ````
+    > **Review note** <br />
+    > This resource needs to be re-added.
+    > ![](https://intellifactory.com/ShowDigitalAsset.aspx?DigitalAsset=140)
+    ````
+
+ * **Link to other IntelliFactory blog posts** using a relative link (to the blogs repo's root folder, starting with a `/`) to the `.md` file. Example:
 
     `/user/granicz/20061124-a-logo-interpreter-under-400-lines.md`
 
     Such links are then browseable in the repository and are also converted to `.html` links in the website.
 
- * ...
+    This means converting the following types of links to repo links:
+    
+     * `https://forums.websharper.com/blog/*/*`
+     * `http://websharper.com/blog-entry/*/*`
+     * `http://fpish.net/blog/*/id/*/*`
+
+ * If a link has gone dead but a newer version exists, update to that with a footnote:
+
+    ```   
+    [^1]: This link has been updated to point to WebSharper reactive forms, which include further pointers on formlets.
+    ```   
+
+ * If a link is dead and has no direct substitute, give your best alternative in the footnote. Example:
+
+    ```   
+    [^1]: This link is dead and has been removed. You can find formlet examples on [Try WebSharper](https://try.websharper.com), filtering for snippets that use `UI.Formlets`. These formlets are an enhanced, reactive version of the original formlet library. You can find more information the [WebSharper.Forms README](https://github.com/dotnet-websharper/forms).
+    ```
+
+ * If a link is dead and no alternatives exist, try locating an archived version of it, and mark it accordingly with a footnote. Example:
+
+    ```
+    [^1]: This link is no longer available. A (broken) snapshot of the page from the Internet archives is available [here](https://web.archive.org/web/20101123072954/http://intellifactory.com/products/wsp/samples/ExtJs.aspx).
+    ```
 
 
 ## Formatting

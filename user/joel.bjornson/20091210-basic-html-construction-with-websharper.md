@@ -1,7 +1,7 @@
 ---
 title: "Basic HTML construction with WebSharper"
 categories: "f#,websharper"
-abstract: "The fundamentals of building HTML (DOM nodes) with WebSharper™. "
+abstract: "The fundamentals of building HTML (DOM nodes) with WebSharper."
 identity: "1914,74746"
 ---
 Regardless the level of sophistication of a web framework, it boils down to the task of generating HTML to be rendered on the client. Therefore I think basic HTML construction is one of the most important things to get right. Plenty of approaches exist, among others:

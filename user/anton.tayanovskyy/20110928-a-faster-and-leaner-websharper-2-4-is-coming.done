@@ -1,0 +1,6 @@
+---
+title: "A Faster and Leaner WebSharper 2.4 is Coming"
+categories: "websharper,f#"
+abstract: "We are currently finalizing the 2.4 release of WebSharper. This release is mainly concerned with bug fixes and quality-of-implementation improvements. The exciting part is that we are witnessing about 30%-35% generated code size reduction, and a 40% reduction in compilation time. The optimizer is also more capable, featuring local tail call optimization."
+identity: "2066,74898"
+---
