@@ -4,11 +4,11 @@ categories: "c#,javascript,f#,websharper"
 abstract: "WebSharper 4.1 introduces multiple new client-server features"
 identity: "5483,84130"
 ---
-WebSharper 4.1 is now available on [NuGet](https://www.nuget.org/packages/websharper), and as a vsix installer on the [WebSharper website](http://websharper.com/downloads).
+WebSharper 4.1 is now available on [NuGet](https://www.nuget.org/packages/websharper), and as a vsix installer on the [WebSharper website](https://websharper.com/downloads).
 
-New and updated documentation: [WebSharper 4.1 for C#](http://developers-test.websharper.io/docs/v4.1/cs) and [WebSharper 4.1 for F#](http://developers-test.websharper.io/docs/v4.1/fs).
+New and updated documentation: [WebSharper 4.1 for C#](https://developers-test.websharper.io/docs/v4.1/cs) and [WebSharper 4.1 for F#](https://developers-test.websharper.io/docs/v4.1/fs).
 
-See some new features live at Try WebSharper: [in C#](http://try.websharper.com/snippet/JankoA/0000Hb) and [in F#](http://try.websharper.com/snippet/JankoA/0000Ha).
+See some new features live at Try WebSharper: [in C#](https://try.websharper.com/snippet/JankoA/0000Hb) and [in F#](https://try.websharper.com/snippet/JankoA/0000Ha).
 
 The release notes are also on [GitHub](https://github.com/dotnet-websharper/websharper/releases/tag/4.1.0.171).
 

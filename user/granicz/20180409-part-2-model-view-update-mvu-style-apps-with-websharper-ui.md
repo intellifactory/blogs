@@ -4,13 +4,13 @@ categories: "mvu,ui,elm,f#,websharper"
 abstract: "In this tutorial, you will learn about using WebSharper UI to implement a simple Model-View-Update (MVU) application pattern, similar to the Elm architecture. In subsequent tutorials, you will learn about enhancing this pattern to a full-scale application development architecture (The WebSharper Architecture) that has superior performance and sufficient flexibility to implement any type of web application."
 identity: "5561,84980"
 ---
-In this tutorial, you will learn about using WebSharper UI to implement a simple Model-View-Update (MVU) application pattern, similar to the [Elm architecture](https://guide.elm-lang.org/architecture/). In subsequent tutorials, you will learn about **enhancing this pattern to a full-scale application development architecture (The WebSharper Architecture)** that has superior performance and sufficient flexibility to implement any type of web application. Be sure to read the [First Steps: Using HTML templates, accessing form values, and wiring events](//intellifactory.com/user/granicz/20180327-first-steps-using-html-templates-accessing-form-values-and-wiring-events) tutorial to get a solid grip on some of the WebSharper fundamentals, these will come handy while reading this tutorial.
+In this tutorial, you will learn about using WebSharper UI to implement a simple Model-View-Update (MVU) application pattern, similar to the [Elm architecture](https://guide.elm-lang.org/architecture/). In subsequent tutorials, you will learn about **enhancing this pattern to a full-scale application development architecture (The WebSharper Architecture)** that has superior performance and sufficient flexibility to implement any type of web application. Be sure to read the [First Steps: Using HTML templates, accessing form values, and wiring events](/user/granicz/20180327-first-steps-using-html-templates-accessing-form-values-and-wiring-events.md) tutorial to get a solid grip on some of the WebSharper fundamentals, these will come handy while reading this tutorial.
 
 ### What you will learn and a quick recap
 
  1. **Using a Model-View-Update (MVU)-like approach** with WebSharper UI. As you will see, WebSharper UI can implement a number of different styles of reactive UI programming easily.
 
-### You already learned in the [previous tutorial](//intellifactory.com/user/granicz/20180327-first-steps-using-html-templates-accessing-form-values-and-wiring-events) how to:
+### You already learned in the [previous tutorial](/user/granicz/20180327-first-steps-using-html-templates-accessing-form-values-and-wiring-events.md) how to:
 
  2. **Create WebSharper SPA projects**
 
@@ -89,8 +89,8 @@ In this tutorial, you will learn about using WebSharper UI to implement a simple
 To get the most out of this tutorial, make sure you have installed:
 
 * .NET Core 2.0+ and ASP.NET Core
-* the  [latest WebSharper templates](http://websharper.com/downloads). This is not strictly required if you clone the GitHub project directly.
-* Visual Studio Code with  [Ionide](http://ionide.io/)  or Visual Studio 2017 
+* the  [latest WebSharper templates](https://websharper.com/downloads). This is not strictly required if you clone the GitHub project directly.
+* Visual Studio Code with  [Ionide](https://ionide.io/)  or Visual Studio 2017 
 
 ### Model-View-Update (MVU) - the basic Elm architecture
 
@@ -110,7 +110,7 @@ where `'Msg` values encode various messages that take the model forward. Both `u
 
 ### Buttons - keeping a counter
 
-Now you will implement the [buttons](https://guide.elm-lang.org/architecture/user_input/buttons.html) example from the Elm documentation by mimicing the above MVU pattern. You can [try the WebSharper UI version online](http://try.websharper.com/snippet/adam.granicz/0000Jr) to see how it works. Here we do:
+Now you will implement the [buttons](https://guide.elm-lang.org/architecture/user_input/buttons.html) example from the Elm documentation by mimicing the above MVU pattern. You can [try the WebSharper UI version online](https://try.websharper.com/snippet/adam.granicz/0000Jr) to see how it works. Here we do:
 
 #### a) Create a new SPA called Counter
 
@@ -225,6 +225,6 @@ There is a whole lot more to see, so stay tuned for more.
 
 ### Source code and try the app
 
-You can fork [this SPA project](https://github.com/websharper-samples/Counter) via GitHub. You can also [try out a slightly adapted version](http://try.websharper.com/snippet/adam.granicz/0000Jr) live on Try WebSharper.
+You can fork [this SPA project](https://github.com/websharper-samples/Counter) via GitHub. You can also [try out a slightly adapted version](https://try.websharper.com/snippet/adam.granicz/0000Jr) live on Try WebSharper.
 
 Happy coding!

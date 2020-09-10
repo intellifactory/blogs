@@ -4,7 +4,7 @@ categories: "templating,ui,f#,websharper"
 abstract: "Congratulations on taking the first step to learn WebSharper! We have carefully put together this hands-on tutorial with the aim to help you get started with WebSharper and on your way to learn functional, reactive web development, putting you on a fast track to unleash the real web developer in you. The skills you pick up with WebSharper will make you a better web developer, and the concepts you learn will remain valid and useful with other functional, reactive web frameworks and libraries as well."
 identity: "5516,84858"
 ---
-Congratulations on taking the first step to learn WebSharper! We have carefully put together this hands-on tutorial with the aim to help you get started with WebSharper and on your way to learn functional, reactive web development, putting you on a fast track to unleash the real web developer in you. The skills you pick up with WebSharper will make you a better web developer, and the concepts you learn will remain valid and useful with other functional, reactive web frameworks and libraries as well. You can find links to further material below and the sources of this tutorial in the bottom of this page, and you can [see the resulting app in action live on Try WebSharper](http://try.websharper.com/snippet/adam.granicz/0000Jn).
+Congratulations on taking the first step to learn WebSharper! We have carefully put together this hands-on tutorial with the aim to help you get started with WebSharper and on your way to learn functional, reactive web development, putting you on a fast track to unleash the real web developer in you. The skills you pick up with WebSharper will make you a better web developer, and the concepts you learn will remain valid and useful with other functional, reactive web frameworks and libraries as well. You can find links to further material below and the sources of this tutorial in the bottom of this page, and you can [see the resulting app in action live on Try WebSharper](https://try.websharper.com/snippet/adam.granicz/0000Jn).
 
 ### What you will learn and where you can find out more
 
@@ -26,8 +26,8 @@ In this tutorial, you will learn how to work with external HTML files (aka. temp
 To get the most out of this tutorial, make sure you have installed:
 
  * .NET Core 2.0+ and ASP.NET Core
- * the [latest WebSharper templates](http://websharper.com/downloads)
- * Visual Studio Code with [Ionide](http://ionide.io/) and/or Visual Studio 2017
+ * the [latest WebSharper templates](https://websharper.com/downloads)
+ * Visual Studio Code with [Ionide](https://ionide.io/) and/or Visual Studio 2017
  
 ### 1. Create your first SPA with WebSharper
 
@@ -162,6 +162,6 @@ As a bonus exercise, you can add a similar error message for the password field 
 
 ### Source code and try the app
 
-You can fork [this SPA project](https://github.com/websharper-samples/LoginWithBulma) via GitHub, it's a whopping 35 LOC F# in its entirety - enjoy! You can also [try out a slightly adapted version](http://try.websharper.com/snippet/adam.granicz/0000Jn) live on Try WebSharper.
+You can fork [this SPA project](https://github.com/websharper-samples/LoginWithBulma) via GitHub, it's a whopping 35 LOC F# in its entirety - enjoy! You can also [try out a slightly adapted version](https://try.websharper.com/snippet/adam.granicz/0000Jn) live on Try WebSharper.
 
 Happy coding!

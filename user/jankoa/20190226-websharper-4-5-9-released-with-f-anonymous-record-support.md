@@ -41,9 +41,9 @@ let anon3 = {| A = Some 1; B = None |} // translates to { A: 1 }
 
 This helps storing the values in minimal form, while keeping the full type safety of F# code.
 
-See it live [here](http://try.websharper.com/snippet/JankoA/0000NK):
+See it live [here](https://try.websharper.com/snippet/JankoA/0000NK):
 
-[![Imgur](https://i.imgur.com/G0cDYLu.jpg)](http://try.websharper.com/snippet/JankoA/0000NK)
+[![Imgur](https://i.imgur.com/G0cDYLu.jpg)](https://try.websharper.com/snippet/JankoA/0000NK)
 
 ### Opt out of templating transformations
 

@@ -14,9 +14,9 @@ While the range of events to which event handlers can be attached typically grow
 
 ### Two-way binding with reactive variables
 
-WebSharper long introduced [UI.Next](https://github.com/intellifactory/websharper.ui.next) to supersede [WebSharper.Html](http://websharper.com/docs#web_development/html_combinators) as its main DOM construction library.
+WebSharper long introduced [UI.Next](https://github.com/dotnet-websharper/ui)[^1] to supersede [WebSharper.Html](https://github.com/dotnet-websharper/html)[^2] as its main DOM construction library.
 
-Buried deep in the WebSharper documentation, you can find a [comprehensive tutorial](http://websharper.com/docs#web_development/ui.next_-_f-sharp) on how to use UI.Next for basic two-way data binding with reactive markup. The drill is pretty simple: next to composing with ordinary HTML combinators, you can use various HTML input controls whose values are automatically synched with a **reactive variable** (typically of type `Var<string>`).
+Buried deep in the WebSharper documentation, you can find a [comprehensive tutorial](https://developers.websharper.com/docs/v4.x/fs/ui)[^3] on how to use UI.Next for basic two-way data binding with reactive markup. The drill is pretty simple: next to composing with ordinary HTML combinators, you can use various HTML input controls whose values are automatically synched with a **reactive variable** (typically of type `Var<string>`).
 
 Here we have a plain input box bound to `v`:
 
@@ -60,7 +60,7 @@ The fun starts when there is dependent markup in your page computed from the val
     ]
 ```
 
-Here, `v.View` returns the current value of `v`, and `textView` converts it to an HTML text node. You can also react to keyboard and mouse input ([API](https://github.com/intellifactory/websharper.ui.next/blob/master/docs/Input.md)) equally easily:
+Here, `v.View` returns the current value of `v`, and `textView` converts it to an HTML text node. You can also react to keyboard and mouse input ([API](https://github.com/dotnet-websharper/ui/blob/master/docs/UINext-Input.md)[^4]) equally easily:
 
 ```fsharp
     div [
@@ -69,13 +69,13 @@ Here, `v.View` returns the current value of `v`, and `textView` converts it to a
     ]
 ```
 
-To sum up the basics a somewhat more elaborate [live snippet](http://try.websharper.com/snippet/adam.granicz/00001u) is below:
+To sum up the basics a somewhat more elaborate [live snippet](https://try.websharper.com/snippet/adam.granicz/00001u) is below:
 
-<div style="width:100%;min-height:550px;position:relative"><iframe style="position:absolute;border:none;width:100%;height:100%" src="http://try.websharper.com/embed/adam.granicz/00001u"></iframe></div>
+<div style="width:100%;min-height:550px;position:relative"><iframe style="position:absolute;border:none;width:100%;height:100%" src="https://try.websharper.com/embed/adam.granicz/00001u"></iframe></div>
 
 ### List models
 
-Now that you can gather and manipulate user input via reactive variables, and reflect computed/derived values in reactive markup, you can also bind composite data in your web pages; and this is where the real fun begins.  All we need is `Models` ([API](https://github.com/intellifactory/websharper.ui.next/blob/master/docs/Model.md)), and in particular `ListModels` ([API](https://github.com/intellifactory/websharper.ui.next/blob/master/docs/ListModel.md)).
+Now that you can gather and manipulate user input via reactive variables, and reflect computed/derived values in reactive markup, you can also bind composite data in your web pages; and this is where the real fun begins.  All we need is `Models` ([API](https://github.com/dotnet-websharper/ui/blob/master/docs/UINext-Model.md)[^5]), and in particular `ListModels` ([API](https://github.com/dotnet-websharper/ui/blob/master/docs/UINext-ListModel.md)[^6]).
 
 `ListModels` associate values with keys in a time-varying collection.  This association can be implicit, or as in most cases explicit. Below is a `ListModel` that stores simple names - here the names themselves act as their own key (note the `id` function used as the value->key map):
 
@@ -148,9 +148,9 @@ module SimpleInput =
         |> Doc.RunById "main"
 ```
 
-Here, `messages` is initialized with a random system message, and `messages.View.DocSeqCached` is a fancy way of reflecting each message to markup - and note we use Bootstrap class names, so be sure to include the main Bootstrap CSS in the template you are serving for your application.  A [live snippet](http://try.websharper.com/snippet/adam.granicz/0000Be) is below:
+Here, `messages` is initialized with a random system message, and `messages.View.DocSeqCached` is a fancy way of reflecting each message to markup - and note we use Bootstrap class names, so be sure to include the main Bootstrap CSS in the template you are serving for your application.  A [live snippet](https://try.websharper.com/snippet/adam.granicz/0000Be) is below:
 
-<div style="width:100%;min-height:300px;position:relative"><iframe style="position:absolute;border:none;width:100%;height:100%" src="http://try.websharper.com/embed/adam.granicz/0000Be"></iframe></div>
+<div style="width:100%;min-height:300px;position:relative"><iframe style="position:absolute;border:none;width:100%;height:100%" src="https://try.websharper.com/embed/adam.granicz/0000Be"></iframe></div>
 
 ### Example - Grouping system messages
 
@@ -206,12 +206,25 @@ Using `filter`, we can compute the info/warning/error set separately and display
         |> Doc.RunById "main"
 ```
 
-So with a few lines adjustment we have message grouping under control - feel free to play with the [live snippet](http://try.websharper.com/snippet/adam.granicz/0000Bf) below:
+So with a few lines adjustment we have message grouping under control - feel free to play with the [live snippet](https://try.websharper.com/snippet/adam.granicz/0000Bf) below:
 
-<div style="width:100%;min-height:300px;position:relative"><iframe style="position:absolute;border:none;width:100%;height:100%" src="http://try.websharper.com/embed/adam.granicz/0000Bf"></iframe></div>
+<div style="width:100%;min-height:300px;position:relative"><iframe style="position:absolute;border:none;width:100%;height:100%" src="https://try.websharper.com/embed/adam.granicz/0000Bf"></iframe></div>
 
 ### Conclusion
 
 In this brief article, we looked at a few basic reactive scenarios with WebSharper and saw how UI.Next makes it easy to work with two-way binding, reactive markup, and aggregate client-side models. In upcoming articles, I will further examine `ListModels` and their more advanced capabilities, including client-side and client-server persistence.
 
 Happy 2017 and happy coding!
+
+
+[^1]: This link has been updated to point to the WebSharper.UI repository.
+
+[^2]: This link has been updated to point to the WebSharper.Html repository.
+
+[^3]: This link has been updated to point to the latest WebSharper.UI documentation page.
+
+[^4]: This link has been updated to the latest version.
+
+[^5]: This link has been updated to the latest version.
+
+[^6]: This link has been updated to the latest version.

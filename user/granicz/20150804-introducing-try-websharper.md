@@ -4,9 +4,9 @@ categories: "snippets,f#,websharper"
 abstract: "We are thrilled to announce the availability of Try WebSharper, a simple and fun way to create and share WebSharper snippets with others!"
 identity: "4424,79902"
 ---
-We are thrilled to announce the availability of [Try WebSharper](http://try.websharper.com), a simple and fun way to create and share WebSharper snippets with others!
+We are thrilled to announce the availability of [Try WebSharper](https://try.websharper.com), a simple and fun way to create and share WebSharper snippets with others!
 
-[![](http://i.imgur.com/s0TUbvdl.png)](http://i.imgur.com/s0TUbvd.png)
+[![](https://i.imgur.com/s0TUbvdl.png)](https://i.imgur.com/s0TUbvd.png)
 
 The code you share can be **run** (=>Run) right in your browser, and you get basic type checking with warnings and errors showing up as red/yellow squiggles.  Currently, this takes a couple seconds to complete so it's not the most convenient way to experiment, but it will get a lot better soon.
 
@@ -14,7 +14,7 @@ We aim to keep this site current with upcoming WebSharper releases, so you can u
 
 ### Converting F# snippets to WebSharper
 
-While [Try WebSharper](http://try.websharper.com) is intended primarily for sharing WebSharper snippets (e.g. F# snippets that produce web output), you can also convert simple F# snippets by following a few simple steps.
+While [Try WebSharper](https://try.websharper.com) is intended primarily for sharing WebSharper snippets (e.g. F# snippets that produce web output), you can also convert simple F# snippets by following a few simple steps.
 
 Say, you wanted to run the following:
 
@@ -89,14 +89,17 @@ So all in all, these should give you three different strategies to convert F# sn
 
 ### Site features and plans
 
-As a code snippets site, [Try WebSharper](http://try.websharper.com) has the usual toolset for snippets: you can **create a new snippet** by hitting the big red plus (+) button in the bottom right corner, **fork an existing snippet** (=>Fork), or **save the one you are working on** (=>Save).
+As a code snippets site, [Try WebSharper](https://try.websharper.com) has the usual toolset for snippets: you can **create a new snippet** by hitting the big red plus (+) button in the bottom right corner, **fork an existing snippet** (=>Fork), or **save the one you are working on** (=>Save).
 
-We also added a basic set of examples (with more being moved from [WebSharper examples](http://websharper.com/samples)), which you can find under the hamburger icon, along with any saved snippets you may have:
+We also added a basic set of examples (with more being moved from [WebSharper examples](https://github.com/websharper-samples)[^1]), which you can find under the hamburger icon, along with any saved snippets you may have:
 
-[![](http://i.imgur.com/13mqital.png)](http://i.imgur.com/13mqita.png)
+[![](https://i.imgur.com/13mqital.png)](https://i.imgur.com/13mqita.png)
 
 ### Coming up
 
 In future releases, we will be introducing additional functionality to help with **"templating" basic snippets** using any one of the above methods, **spinning up snippets via GitHub gists**, and lighting up **much more refined code assistance services** (code completion, type checking as you type, hover comments and signatures, etc.)
 
 Happy sharing!
+
+
+[^1]: This link has been updated to point to WebSharper samples GitHub organization.

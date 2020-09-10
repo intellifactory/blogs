@@ -18,9 +18,9 @@ We are continuing to round out the [documentation](https://developers.websharper
 Your questions are welcome on the [forums](https://forums.websharper.com/forum/questions).
 All the source for the documentation browser are also available on [GitHub](https://github.com/intellifactory/websharper.docs), please feel free to submit issues and pull requests.
 
-[Try WebSharper](http://try.websharper.com/) has also been updated, test out WebSharper for both languages right in your browser.
+[Try WebSharper](https://try.websharper.com/) has also been updated, test out WebSharper for both languages right in your browser.
 
-You can download the [VSIX installer](http://websharper.com/downloads) for Visual Studio 2015/17 or download a template straight from
+You can download the [VSIX installer](https://websharper.com/downloads) for Visual Studio 2015/17 or download a template straight from
 the [documentation subsite](https://developers.websharper.com/docs), look for "Create a project" in the top-right drop-down menu.
 
 Big thanks to everyone who has been testing WebSharper 4 beta and submitted bug reports, questions and feature ideas!
@@ -89,6 +89,6 @@ High on our priority list for 4.x versions:
 * TypeScript 2.5 interoperability: generate .NET wrapper classes for `.d.ts` declarations, output `.d.ts` for WebSharper code
 * WebAssembly interoperability: generate .NET wrapper classes for `.wasm` files and compile a subset of the languages to WebAssembly
 
-Discuss upcoming features and make feature requests on the [WebSharper forums](http://forums.websharper.com/forum/featured).
+Discuss upcoming features and make feature requests on the [WebSharper forums](https://forums.websharper.com/forum/featured).
 
 Happy coding!
