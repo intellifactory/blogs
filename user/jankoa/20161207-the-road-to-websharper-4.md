@@ -22,8 +22,8 @@ Main features are:
 ### What is currently available?
 
 WebSharper 4 beta packages are available under the codename `Zafir` on NuGet.
-Go to [try.websharper.com](http://try.websharper.com/) to explore, write, test and share code snippets and mini-applications easily in both C# and F#.
-New documentation is under work, hosted on [GitHub](https://github.com/intellifactory/websharper.docs) and browsable at [websharper.com/docs](http://websharper.com/docs). First full tutorial for C# newcomers presents a small [CRUD application](http://websharper.com/tutorials#web_development/book_collection_(c-sharp)).
+Go to [try.websharper.com](https://try.websharper.com/) to explore, write, test and share code snippets and mini-applications easily in both C# and F#.
+New documentation is under work, hosted on [GitHub](https://github.com/intellifactory/websharper.docs) and browsable at [websharper.com/docs](https://websharper.com/docs). First full tutorial for C# newcomers presents a small [CRUD application](http://websharper.com/tutorials#web_development/book_collection_(c-sharp)).
 
 ### Releases
 

@@ -1,6 +1,6 @@
 ---
 title: "From enterprise to next-generation web: celebrating 11 years with WebSharper"
-categories: "f#,websharper"
+categories: "f#,websharper,fsadvent"
 abstract: "A brief outline of the historical circumstances around WebSharper (just some notes in no particular order) that **position it for a bright future outlook**, and a quick glimple of what we are working on with it to advance the current state of F# web programming."
 identity: "5679,86183"
 ---

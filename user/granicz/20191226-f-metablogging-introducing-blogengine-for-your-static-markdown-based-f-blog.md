@@ -1,6 +1,6 @@
 ---
 title: "F# metablogging: introducing BlogEngine for your static markdown-based F# blog"
-categories: "blogging,f#,websharper"
+categories: "f#,websharper,blogging,fsadvent"
 abstract: "In this article, I want to show you another way of keeping your SSG in F#: using WebSharper. Armed with the full power of a .NET web framework and its templating features (see the HTML templates section), this has numerous advantages, most importantly, among others, that you can embed dynamic features written in F# or C# to give you a truly impressive and dynamic blog, despite being statically generated."
 identity: "5862,87610"
 ---
