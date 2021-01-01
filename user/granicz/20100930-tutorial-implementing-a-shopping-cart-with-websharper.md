@@ -642,4 +642,4 @@ And finally, you display the cart contents and return the placeholder element:
 
 In this tutorial, you saw how you can bind and use existing JavaScript libraries with WebSharper and implemented a client-based persistent shopping cart based on PersistJs. You used asynchronous workflows to model fetching values from the persistent store, and F# events for modeling the communication between two pagelets that made up your shopping cart application.
 
-[AbstractShoppingCart.zip](http://www.intellifactory.com/downloads/blog/AbstractShoppingCart.zip)
+[AbstractShoppingCart.zip](https://github.com/intellifactory/blogs/raw/master/assets/AbstractShoppingCart.rar)
