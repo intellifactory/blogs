@@ -668,3 +668,11 @@ Namespace "WebSharper.DayJs" [
 ]
 ```
 
+`TODO`
+
+## Final Words
+
+Thank you for following along! You can find the whole project on [my GitHub](https://github.com/btamas2000/dayjs). I encourage you to try making your own extension for WebSharper. These Extensions really show just how much you can do with WS and how powerful a tool WIG is. Have a great day!
+
+Tamas Banka
+[@btamas2000](https://github.com/btamas2000)
