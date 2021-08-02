@@ -1,12 +1,12 @@
 ---
-title: "WebSharper WIG tutorial - how to make JS library extension for WebSharper"
+title: "Creating a WebSharper binding for Day.js"
 categories: "f#,wig,websharper"
 abstract: ""
 ---
 
 # Creating a WebSharper binding for `Day.js`
 
-Hello!<br>
+Hello!
 In this blog I'm going to show you how to make an extension for WebSharper with WIG (WebSharper Interface Generator). WIG is a powerful tool in WebSharper and with that you can bind JavaScript libraries and access them from F# code. Let's get started!
 
 For this tutorial I will be binding [Day.js](https://day.js.org/en/)
@@ -152,7 +152,7 @@ let Assembly =
     ]
 ```
 
-Great! This will include a script tag with this source in the project you want to use `WebSharper.DayJs`. <br> Now let's take a look at the [Day.js documentation](https://day.js.org/docs/en/installation/installation)! After a quick look let's jump to the <b>Parse</b> tab ans start with binding.
+Great! This will include a script tag with this source in the project you want to use `WebSharper.DayJs`. Now let's take a look at the [Day.js documentation](https://day.js.org/docs/en/installation/installation)! After a quick look let's jump to the <b>Parse</b> tab ans start with binding.
 
 First is `Now` subtab which seems to be about the constructor. It accepts a native `Date` object and without parameters works too (It also accepts `undefined` but since it says it will translate to a unit constructor there is no need to put that in). Here's how we can bind it:
 
