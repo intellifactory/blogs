@@ -177,7 +177,7 @@ But with `WithSourceName` we can use it in the F# code like this:
 let now = DayJs()
 ```
 
-Moving on to the `String` subtab we can see it is also a constructor that accpets `ISO 8601` format strings but we just use plain string for it:
+Moving on to the `String` subtab we can see it is also a constructor that accepts `ISO 8601` format strings but we just use plain string for it:
 
 ```fsharp
 let DayJs =
@@ -351,7 +351,7 @@ module DayJsHelpers =
                             else script dHttp (writer Scripts) false url
 ```
 
-Basicly what is important in this code is that one of its functionality is making a `script` element in the html's `head`. [Here](https://day.js.org/docs/en/plugin/loading-into-browser) it is stated that we can use the `extend` method like this:
+Basically what is important in this code is that one of its functionality is making a `script` element in the html's `head`. [Here](https://day.js.org/docs/en/plugin/loading-into-browser) it is stated that we can use the `extend` method like this:
 
 ```js
 dayjs.extend(window.dayjs_plugin_advancedFormat)
@@ -475,9 +475,8 @@ let DayJs =
     |> RequiresExternal [T<WebSharper.DayJs.Helpers.DayJsHelpers.MainResource>]
     |> WithSourceName "DayJs"
     |+> Static [
-        Constructor T<unit>
-        Constructor T<Date>
-        Constructor T<string>
+        ...
+
         Constructor (T<string> * (T<string> + !| T<string>) * !? T<bool>)
         |> RequiresExternal [T<WebSharper.DayJs.Helpers.DayJsHelpers.CustomParseFormatResource>]
         Constructor (T<string> * (T<string> + !| T<string>) * T<string> * !? T<bool>)
@@ -635,6 +634,8 @@ If we add the `.ToString()` to `someDate` and `formattedDate` in the tests it wi
 
 From now on I will only give explanations when we encounter problems where the solution has not yet been seen in this tutorial.
 
+------------
+
 In [Parse/Object](https://day.js.org/docs/en/parse/object) we can see that the constructor can also accept an object that contains optional values like `year`, `month`, etc. When we have to bind something like this, use `Pattern.Config`:
 
 ```fsharp
@@ -668,7 +669,88 @@ Namespace "WebSharper.DayJs" [
 ]
 ```
 
-`TODO`
+------------
+
+During the binding you might notice that some methods are present both as `static` and `instance`. Now if you define two methods that are essentially the same but one is static while the other is instance, WIG will give you a duplicate definition error. To work around this you can yet again use `WithSourceName`. For example for the `utc` method:
+
+```fsharp
+let DayJs =
+    Class "dayjs"
+    |> RequiresExternal [T<WebSharper.DayJs.Helpers.DayJsHelpers.MainResource>]
+    |> WithSourceName "DayJs"
+    |+> Static [
+        ...
+        
+        "utc" => !? T<bool> ^-> TSelf
+        |> WithSourceName "StaticUTC"
+        |> RequiresExternal [T<WebSharper.DayJs.Helpers.DayJsHelpers.UTCResource>]
+
+        ...
+    ]
+    |+> Instance [
+        ...
+
+        "utc" => !? T<bool> ^-> TSelf
+        |> RequiresExternal [T<WebSharper.DayJs.Helpers.DayJsHelpers.UTCResource>]
+        
+        ...
+    ]
+```
+
+With this both methods have the same name in JavaScript but not in F# which is totally fine for us.
+
+------------
+
+Probably the last, more challenging problem is the handling of `locales`. In JavaScript the usage goes like this:
+
+```js
+require('dayjs/locale/de')
+dayjs.locale('de')
+dayjs.locale('en')
+```
+
+One idea would be to make a `Locale` Class which has properties like `EN` or `FR` which requires the its own locale url as source. That's what we will be going with but taking a look at Day.js' [cdnjs](https://cdnjs.com/libraries/dayjs) page there are quite a lot of locales so let's make a generator for them:
+
+```fsharp
+let Locale =
+    Class "Locale"
+
+let mutable Resources : CodeModel.NamespaceEntity list = []
+
+let LocaleSetup (s: string) = 
+    let r =
+        Resource (s.ToUpperInvariant() + "CDN") (sprintf "https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.6/locale/%s.min.js" s)
+    
+    Resources <- List.append Resources [r]
+
+    (s.ToUpperInvariant()) =? TSelf
+    |> Requires [r]
+    |> WithGetterInline (sprintf "'%s'" s)
+
+let localeStrings =
+    [
+        "af"
+        "am"
+        "ar-dz"
+        ...
+    ]
+
+Locale
+|+> Static (localeStrings |> List.map (fun x -> LocaleSetup x :> CodeModel.IClassMember))
+|> ignore
+```
+
+Now we just need to add the resources to the assemblies too:
+
+```fsharp
+let Assembly =
+    Assembly [
+        Namespace "WebSharper.DayJs.Resources" [
+            yield! Resources
+        ]
+        ...
+    ]
+```
 
 ## Final Words
 
