@@ -83,7 +83,7 @@ module Res =
         Resource "Js" "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
 
     let TzJs =
-        Resource "TimezoneJs" "https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone.min.js"
+        Resource "TimezoneJs" "https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone-with-data.min.js"
         |> Requires [Js]
 
 module Definition =
@@ -410,6 +410,72 @@ The only new thing here is the `int * string` constructor, the rest are internal
 Constructor (T<int>?d * T<string>?unit)
 |> WithComment "Create a moment by specifying the unit."
 ```
+
+## Testing
+
+I don't think I have to say that it is recommended to do tests while binding to see if the extension is working as intended. For example we can create a WebSharper Single Page Application project for the tests:
+
+```
+dotnet new websharper-spa -lang f# -o WebSharper.Moment.Tests
+```
+
+Let's go to the project file it created and just before the `</Project>` end tag, add this:
+
+```xml
+<ItemGroup>
+  <Reference Include="WebSharper.Moment">
+    <HintPath>..\WebSharper.Moment\bin\Debug\netstandard2.0\WebSharper.Moment.dll</HintPath>
+  </Reference>
+</ItemGroup>
+```
+
+This will include the dll of the binding when we do `open WebSharper.Moment` in the tests. You can do your own tests in this but I'm going to show you an example too. Let's modify `wwwroot/index.html` and `Client.fs` a bit:
+
+`wwwroot/index.html`:
+
+```html
+<body>
+    <h1>Moment js testing</h1>
+    <div id="main" ws-children-template="Main">
+        <div ws-replace="SomeTest"></div>
+    </div>
+    <script type="text/javascript" src="Content/WebSharper.Moment.Tests.min.js"></script>
+</body>
+```
+
+`Client.fs`:
+
+```fsharp
+namespace WebSharper.Moment.Tests
+
+open WebSharper
+open WebSharper.JavaScript
+open WebSharper.JQuery
+open WebSharper.UI
+open WebSharper.UI.Html
+open WebSharper.UI.Client
+open WebSharper.UI.Templating
+open WebSharper.Moment
+
+[<JavaScript>]
+module Client =
+
+    type IndexTemplate = Template<"wwwroot/index.html", ClientLoad.FromDocument>
+
+    [<SPAEntryPoint>]
+    let Main () =
+        let m = Moment().Format()
+
+        IndexTemplate.Main()
+            .SomeTest(
+                p [] [text m]
+            )
+            .Doc()
+        |> Doc.RunById "main"
+
+```
+
+Opening `wwwroot/index.html` will show you the results.
 
 ## Final words
 
