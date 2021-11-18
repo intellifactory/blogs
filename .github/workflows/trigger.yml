@@ -10,3 +10,7 @@ jobs:
       - name: Trigger repository_dispatch for intellifactory.github.io
         run: |
           curl -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" -H "Accept: application/vnd.github.everest-preview+json" -H "Content-Type: application/json" https://api.github.com/repos/intellifactory/intellifactory.github.io/dispatches --data '{"event_type": "build_application"}'
+
+      - name: Trigger repository_dispatch for website
+        run: |
+          curl -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" -H "Accept: application/vnd.github.everest-preview+json" -H "Content-Type: application/json" https://api.github.com/repos/intellifactory/website/dispatches --data '{"event_type": "build_application"}'
