@@ -1,15 +1,13 @@
 ---
-title: "Variations for a WebSharper shopping cart - Part 2"
+title: "Reactive forms with WebSharper.Forms"
 categories: "f#,websharper,ui,forms,reactive,fsadvent"
 abstract: ""
 identity: "-1,-1"
 ---
 
-# Variations for a WebSharper shopping cart - Part 2
+I would like to start by thanking [Sergey Tihon](https://twitter.com/sergey_tihon) for organizing [F# Advent](https://sergeytihon.com/category/f-advent/).
 
-I would like to start by thanking [Sergey Tihon](https://twitter.com/sergey_tihon) for organizing [F# Advent](https://sergeytihon.com/category/f-advent/) and giving me the opportunity to share my article with the F# world.
-
-Last year's F# Advent had an article by [Adam Granicz](https://twitter.com/granicz) presenting ways to implement variations on implementing a shopping cart using WebSharper's UI library. This year I want to show how to implement a similar shopping cart with the help of the [WebSharper.Forms library](https://github.com/dotnet-websharper/forms). The goal here is to present the strong abstraction of UI components with the Forms library and give an example of the reusability of these components. 
+Last year's F# Advent had an article by [Adam Granicz](https://twitter.com/granicz) shows variations on implementing a shopping cart using WebSharper's UI library. In this article, I want to show how to implement a similar shopping cart with the help of the [WebSharper.Forms library](https://github.com/dotnet-websharper/forms). The goal here is to present the strong abstraction of UI components with the Forms library and give an example of the reusability of these components. 
 
 # Setup
 
@@ -21,15 +19,15 @@ type EndPoint =
     | [<EndPoint "/checkout">] Checkout
 ```
 
-- Home page will be the page to add items to the basket. On this page, we will have a static rendering of our basket.
-- Checkout page is going to be our summary page listing the items from the basket and manipulating them.
+- Home page will be the page to add items to the cart. On this page, we will have a rendering of our cart.
+- Checkout page is going to be our summary page listing the items from the cart and manipulating them.
 
 # Home page
 
 Our home page contains two sections:
 
 - An item listing
-- Our read-only basket listing what we have added to the basket so far
+- Our read-only cart listing what we have added to the cart so far
 
 In the item listing let's just assume that every item can only be added once to the shopping cart.
 
@@ -39,12 +37,12 @@ Let's take a look at our form definition. Because of our restriction above, we c
 let itemsToOrder : Var<Set<string>> = Var.Create Set.empty
 ```
 
-This will be our store for our items in our basket, which will be modified by our item listing whenever we add an item to our basket.
+This will be our store for our items in our cart, which will be modified by our item listing whenever we add an item to our cart.
 
 This is also used to construct our Form:
 
 ```fsharp
-let basketForm : Form<Set<string>, (Var<Set<string>> -> Doc) -> Doc> =
+let cartForm : Form<Set<string>, (Var<Set<string>> -> Doc) -> Doc> =
         Form.Return id
         <*> (Form.YieldVar itemsToOrder)
 ```
@@ -84,7 +82,7 @@ To enhance our Form with the logic that will be executed when this form is submi
 Now let's take at how we are rendering the above.
 
 ```fsharp
-basketForm.Render(fun itemStore _ ->
+cartForm.Render(fun itemStore _ ->
     itemStore.View
     |> Doc.BindView(fun items ->
         items
@@ -98,16 +96,18 @@ basketForm.Render(fun itemStore _ ->
 
 Using `WebSharper.Forms`, the Form structures we are creating are provided with different `Render*` functions, and from these, the Render function is the simplest that we can use. This render function takes our `Var<Set<string>>` and returns a `Doc`. The ignored parameter of the render function is the trigger, which we will only use on the Checkout screen's page. We are using `WebSharper.UI`'s html notation to render our Form, but we could have utilized the templating engine as well from `WebSharper.UI`.
 
-Because `WebSharper.Forms` is using `WebSharper.UI's` reactive layer, whenever itemsToOrder is updated within the Render function or outside of the Form's handling, it will get updated by the reactive layer resulting in automatically updated views representing our basket state.
+Because `WebSharper.Forms` is using `WebSharper.UI's` reactive layer, whenever itemsToOrder is updated within the Render function or outside of the Form's handling, it will get updated by the reactive layer resulting in automatically updated views representing our cart state.
 
 At last, there is a checkout button, which takes us to our Checkout page.
 
+![Screenshot of home page](https://i.imgur.com/gvx7gJI.png)
+
 # Checkout page
 
-The checkout page is reusing the above created `basketForm`, but this time we are going to create a different render function for it that allows modification of the basket as well. Let's take a look at it:
+The checkout page is reusing the above created `cartForm`, but this time we are going to create a different render function for it that allows modification of the cart as well. Let's take a look at it:
 
 ```fsharp
-basketForm
+cartForm
 |> Form.Run (fun items ->
     JS.Alert
         <| sprintf "You have ordered: %s" (items |> String.concat ",")
@@ -145,7 +145,10 @@ basketForm
 
 Here before we are calling our render function, we call the `Form.Run` function to provide the logic that will execute upon invoking the form's trigger. In our case this will just use JavaScript's alert function to give us a summary of our order. Note how it's invoked in the onclick handler of the "Order" button in our render function, with calling the submitter's trigger function
 
-We are still using the Forms library's Render function, but this time we are also modifying our original `Var<Set<string>>` structure through the `Var`, that is provided by the `Form.Render` function, by removing items from the basket. This is going to update the original `itemsToOrder` variable, as we have added that to our form with the `YieldVar` function. As mentioned above in the Home page section, this is also a reactive view, meaning as we remove items from our basket, the view is automatically updated by WebSharper.UI's reactive layer.
+We are still using the Forms library's Render function, but this time we are also modifying our original `Var<Set<string>>` structure through the `Var`, that is provided by the `Form.Render` function, by removing items from the cart. This is going to update the original `itemsToOrder` variable, as we have added that to our form with the `YieldVar` function. As mentioned above in the Home page section, this is also a reactive view, meaning as we remove items from our cart, the view is automatically updated by WebSharper.UI's reactive layer.
+
+![Screenshot of checkout page](https://i.imgur.com/xS1aOoy.png)
+
 
 # Summary
 
@@ -155,8 +158,13 @@ You can check out the code [here](https://github.com/Jooseppi12/fsadvent2021) an
 
 # How to proceed from here?
 
-Well, the above example had the limitation of being an SPA for the simplicity of the article, but converting this to a sitelet would be closer to a real-life scenario. One way we could approach that is using a localStorage backed collection for our basket, therefore when navigating between pages we could keep the state of our basket. To do that, we can utilize WebSharper.UI's ListModel, which supports LocalStorage backing.
+Well, the above example had the limitation of being an SPA for the simplicity of the article, but converting this to a sitelet would be closer to a real-life scenario. One way we could approach that is using a localStorage backed collection for our cart, therefore when navigating between pages we could keep the state of our cart. To do that, we can utilize WebSharper.UI's ListModel, which supports LocalStorage backing.
 
-Additionally, we can utilize more advanced functions from the Forms library, both on the render and constructing side.
+```fsharp
+let myStorage : Storage<string * int> = Storage.LocalStorage "myCart" Serializer.Default
+let itemsToOrder: ListModel<string, string * int> = ListModel.CreateWithStorage fst myStorage
+```
 
-But let's keep that for a future part 3! :)
+Additionally, we can utilize more advanced functions (RenderMany, RenderManyAdder, RenderDependent ...) from the Forms library, both on the render and constructing side.
+
+But let's keep that for a future part 2! :)
