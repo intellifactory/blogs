@@ -17,7 +17,7 @@ We will be able to:
   * Handle certain link navigations (URL changes) on the client without reloading the page, while reloading from server when we enter another part of the site
 
 So routing duties are split between the server and client, meanwhile both sides are able to link to any page on the site safely.
-This is a compromise between a many-page site and a single-page application which can be useful where speed of navigation is preferred in some page navigations and full page reload for up-to date information or server-side processing in otheres.
+This is a compromise between a many-page site and a single-page application which can be useful where speed of navigation is preferred in some page navigations and full page reload for up-to date information or server-side processing in others.
 
 Our demo project is a rudimentary blog engine, that has a Home page with the full list of articles, Article pages for each entry for reading, and an Edit page for editing a selected article or a creating a new one.
 The sitemap is represented by this type:
@@ -42,7 +42,7 @@ Splitting between these lines can be centralized with an active pattern:
 
 # Setup
 
-As this sample uses some easy persistance by writing/reading `.txt` files in an `/articles` folder, there is no online demo.
+As this sample uses some easy persistence by writing/reading `.txt` files in an `/articles` folder, there is no online demo.
 
 To check out the sample project, run `git clone https://github.com/Jand42/MiniBlog` then `dotnet run` from the MiniBlog folder.
 Then open `http://localhost:5000/`
