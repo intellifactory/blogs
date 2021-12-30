@@ -506,6 +506,6 @@ WebSharper.UI templating and reactive data models are an effective way to develo
 
 Now, there are still a number of things that can be improved or streamlined further. If you are interested in discovering more, come and chat in the [WebSharper Gitter channel](http://gitter.im/intellifactory/websharper):
 
-[![](https://icon-icons.com/icons2/2530/PNG/128/gitter_button_icon_151850.png)](http://gitter.im/intellifactory/websharper)
+[![](https://badgen.net/gitter/members/intellifactory/websharper)](http://gitter.im/intellifactory/websharper)
 
 Happy holidays!
