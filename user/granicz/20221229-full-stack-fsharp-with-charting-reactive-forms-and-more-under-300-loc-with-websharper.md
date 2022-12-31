@@ -1,28 +1,26 @@
 ---
 title: "Full-stack F# with charting, reactive forms, and more under 300 LOC with WebSharper"
-categories: "f#,websharper"
+categories: "f#,websharper,fsadvent"
 abstract: ""
 identity: "-1,-1"
 ---
->
-> This post is part of F# Advent 2022, a huge thanks to Sergey Tihon for organizing!
->
-> If you are burning to read more, here is a list of my other F# Advent articles.
->
->* 2021 - [Content-managed WebSharper apps with custom web controls and templating](https://intellifactory.com/user/granicz/20211230-ContentManagedWebSharperAppsWithCustomWebControlsAndTemplating)
->
->* 2020 - [Variations for a WebSharper shopping cart](https://intellifactory.com/user/granicz/20201231-variations-for-a-websharper-shopping-cart)
->
->* 2019 - [F# metablogging: introducing BlogEngine for your static markdown-based F# blog](https://intellifactory.com/user/granicz/20191226-f-metablogging-introducing-blogengine-for-your-static-markdown-based-f-blog)
->
->* 2018 - [From enterprise to next-generation web: celebrating 11 years with WebSharper](https://intellifactory.com/user/granicz/20181210-from-enterprise-to-next-generation-web-celebrating-11-years-with-websharper)
->
->* 2017 - [Serving SPAs](https://intellifactory.com/user/granicz/20171229-serving-spas)
->
->* 2016 - [Simple reactive scenarios with WebSharper](https://intellifactory.com/user/granicz/20161231-simple-reactive-scenarios-with-websharper)
->
->* 2015 - [WebSharper - a year in review](https://intellifactory.com/user/granicz/20151226-websharper-a-year-in-review)
->
+
+This post is part of F# Advent 2022, a huge thanks to Sergey Tihon for organizing! If you are burning to read more, here is a list of my other F# Advent articles:
+
+* 2021 - [Content-managed WebSharper apps with custom web controls and templating](https://intellifactory.com/user/granicz/20211230-ContentManagedWebSharperAppsWithCustomWebControlsAndTemplating)
+
+* 2020 - [Variations for a WebSharper shopping cart](https://intellifactory.com/user/granicz/20201231-variations-for-a-websharper-shopping-cart)
+
+* 2019 - [F# metablogging: introducing BlogEngine for your static markdown-based F# blog](https://intellifactory.com/user/granicz/20191226-f-metablogging-introducing-blogengine-for-your-static-markdown-based-f-blog)
+
+* 2018 - [From enterprise to next-generation web: celebrating 11 years with WebSharper](https://intellifactory.com/user/granicz/20181210-from-enterprise-to-next-generation-web-celebrating-11-years-with-websharper)
+
+* 2017 - [Serving SPAs](https://intellifactory.com/user/granicz/20171229-serving-spas)
+
+* 2016 - [Simple reactive scenarios with WebSharper](https://intellifactory.com/user/granicz/20161231-simple-reactive-scenarios-with-websharper)
+
+* 2015 - [WebSharper - a year in review](https://intellifactory.com/user/granicz/20151226-websharper-a-year-in-review)
+
 
 ---
 
@@ -467,7 +465,7 @@ Whether you make an SPA out of it or just keep it as a self-serving sitelet, you
 
 ## News: the upcoming WebSharper 7
 
-This post wouldn't be complete without a couple WebSharper announcements. First off, WebSharper turned 15 this year - and a huge thanks to our users and contributors for making it better and better! Each major version we released feels like a new project, and WebSharper 6 is still less than a year old.
+This post wouldn't be complete without a couple WebSharper announcements. First off, WebSharper turned 15 this year - a huge thanks to our users and contributors for making it better and better! Each major version we released feels like a new project, and WebSharper 6 is still less than a year old.
 
 Back in 2018, I wrote an article [for the 11th year mark](https://intellifactory.com/user/granicz/20181210-from-enterprise-to-next-generation-web-celebrating-11-years-with-websharper), which outlines a lot of the direction we have been pursuing ever since - opening up a WASM-based execution with [Bolero](https://fsbolero.io) and building further on WASM AOT. That article also walks through an app that you can cross-compile to JavaScript and run on WASM at the same time, requiring minimal code changes - given that WebSharper and Bolero share the same HTML notation and templating capabilities.
 
