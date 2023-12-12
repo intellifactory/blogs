@@ -1,42 +1,46 @@
 ---
 title: "Proxying with WebSharper"
 categories: "f#,websharper,proxy,fsadvent"
-abstract: ""
+abstract: "Using the Validus library in WebSharper projects"
 identity: "-1,-1"
 ---
 
-I was using the [Validus][1] library in a non-web project, when I realized it would be quite useful to leverage the functionality of it in the browser as well, but as I'm using WebSharper and the library is not built with it, at first it seems like a no-go. But this is the reason why WebSharper's compiler is extendable with proxies! But before utilizing them, let's start at the beggining with an approach, that feels like it should work, but in the end it's not optimal.
+I was using the [Validus][1] library in a non-web project, when I realized it would be quite useful to leverage its functionality in the browser as well. I'm using WebSharper and I was not aware of a Validus binding for it, so at first this seemed like a no-go. But here is where WebSharper proxies come to the rescue! But before then, let's start with an alternate approach that feels like the right approach, and then conclude why it's not optimal and why proxies are the right tool after all.
 
-## Using the source and translating it to javascript
+## First attempt: using the source and translating it to JavaScript
 
-As Validus is open source, I can just grab the source code (via git submodules), create a new project from WebSharper.Templates via `dotnet new websharper-lib -lang F# -n AsJavascriptLib` and reference the source files and compile with WebSharper. At first this sounds like something that should work and in simple cases would be enough.
+As Validus is open source, it's tempting to just compile it to JavaScript. I can grab the source code (say, via a git submodule), create a new WebSharper library project (be sure to install `WebSharper.Templates` via `dotnet new install WebSharper.Templates`, then `dotnet new websharper-lib -lang F# -n AsJavascriptLib`), and add the existing source files to it.
 
-So our project file would contain a section like this:
+So my project file has a section like this:
 
-```
+```xml
 <ItemGroup>
   <Compile Include="../Validus/src/Validus/Core.fs" />
   <Compile Include="../Validus/src/Validus/Validators.fs" />
   <Compile Include="../Validus/src/Validus/Validators.Default.fs" />
   <Compile Include="../Validus/src/Validus/Check.fs" />
   <Compile Include="../Validus/src/Validus/Operators.fs" />
-  <Compile Include="Proxy.fs" />
   <None Include="wsconfig.json" />
 </ItemGroup>
 ```
 
-We are referencing the Validus source code through the submodule and create a library with WebSharper. You can see that there is a `Proxy.fs` file also included, let's ignore that for now, I will talk about that in a couple sections later.
+Here is where things start to go south: when I try to compile this, WebSharper tells me that it can't translate Regex.IsMatch from the BCL:
+
+![Error without the proxy](https://i.imgur.com/Z4T81g7.png)
 
 
 ### What is the problem with this?
 
-But there is a big problem with this approach: We are essentially creating a new type instead of telling the compiler how to translate the existing types to JavaScript. This means that if we want to reuse functionality both on the client and server side, we are not working with the same types making things quite complicated for us.
+I can of course rewrite the missing BCL calls and get my JavaScript library, plug it into my JavaScript/TypeScript projects, and all would be OK. But my intention was to use Validus in my WebSharper applications, and by making it into a new WebSharper library I essentially recreated everything as new .NET types, instead of telling the compiler how to translate the existing types (from the Validus assembly) to JavaScript. This means that if we want to reuse functionality both on the client and server side, we are not working with the same types, making things more complicated than what they should be.
 
-## Use a proxy project!
 
-WebSharper.Templates also offers a `websharper-prx` project type that we can create via `dotnet new websharper-lib -lang F# -n ProxyProject`. What it does is instead of generating a new type for us, that would shadow the original type, it creates metadata so that the WebSharper compiler can use the `Validus` code during JS translation. We would do the same steps to include the source code of
+## Solution: use a proxy!
 
-Alternatively you can convert the existing library project to a proxy one, with changing the content of `wsconfig.json` to this:
+A WebSharper proxy is a type that tells the compiler how to compile another .NET type into JavaScript.
+
+Next to library projects, `WebSharper.Templates` also features a `websharper-prx` project template for proxy projects. All you need to proxy .NET libraries is to create your proxy project with `dotnet new websharper-prx -lang F# -n ProxyProject` and add your proxies to it.
+
+Given our earlier prototype, instead of creating a new project, we can simply convert it to a proxy project by changing the content of `wsconfig.json` to this:
 
 ```json
 {
@@ -46,25 +50,38 @@ Alternatively you can convert the existing library project to a proxy one, with 
 }
 ```
 
-The key here is the `proxyTargetName` setting, which tells the compiler what Assembly we want to translate to javascript.
+and adding a `Proxy.fs` to the project file:
 
-## What if I don't have access to the source code
+```xml
+<ItemGroup>
+  ...
+  <Compile Include="Proxy.fs" />
+<ItemGroup>
+```
 
-This is the part where I want to get back to that extra file in the first part of the article. `Validus` is using `System.Text.RegularExpressions.Regex.IsMatch` function, which at the moment is not getting translated by the WebSharper compiler. But we can tell the compiler how to translate this with the help of the `ProxyAttribute`.
+The key here is the `proxyTargetName` setting, which tells the compiler what assembly we want to translate to JavaScript.
 
-The `ProxyAttribute` works quite similarly to the proxy project, it tells the compiler how to translate a unit of code to JavaScript. So to proxy the missing function from RegularExpressions to use Validus, we can just add the following to a file and include it in the project:
+
+## What if I don't have access to a library's source code?
+
+Going back to our Validus experiment, we found that is uses `IsMatch` from `System.Text.RegularExpressions.Regex`, which WebSharper fails to translate. But now, we can tell the compiler how to translate it with the help of the `Proxy` attribute.
+
+`ProxyAttribute` tells the compiler how to translate a piece of .NET code to JavaScript. So to proxy the missing function from `RegularExpressions` that Validus uses, we can simply add the following to `Proxy.fs`, redirecting to the standard JavaScript regex functionality (we will not be trying to bridge the differences between JavaScript and .NET regexes in this article):
 
 ```fsharp
+open WebSharper.JavaScript
+
 [<Proxy(typeof<System.Text.RegularExpressions.Regex>)>]
 type internal RegexProxy =
     static member IsMatch(toMatch: string, pattern: string) = RegExp(pattern).Test toMatch
 ```
 
-With the above in our our proxy project, we can build our proxy project to be used in the browser. It is recommended to mark the proxy implementation to be `internal` or `private` as it does not provide any usable code, it is only operating on the metadata level of the WebSharper compilation. If the proxy type is marked as `public` the compiler will give a warning about this.
+With this tiny addition, we can now build our proxy project and use it along Validus itself in any WebSharper project. In general, you should mark proxies to be `internal` or `private`, as they themselves shouldn't be used/referenced directly. To avoid possible pitfalls, if a proxy is marked as `public`, the compiler will warn about it.
+
 
 ## Let's see it in action!
 
-To use our proxy project we need to include both the original `Validus` library and the our new proxy project, like this:
+Alas - we can finally reap the benefits of Validus in a WebSharper app! To use our proxy project we need to include both the original `Validus` library and our new proxy project, like this:
 
 ```
 <ItemGroup>
@@ -78,7 +95,7 @@ To use our proxy project we need to include both the original `Validus` library 
 </ItemGroup>
 ```
 
-After that we can take the example from the README of `Validus`:
+After that we can take the example from the Validus README:
 
 ```fsharp
 let ofDto (dto : PersonDto) =
@@ -107,27 +124,26 @@ let ofDto (dto : PersonDto) =
         Check.required (Check.DateTime.greaterThan DateTime.Now)
 
     validate {
-    let! first = nameValidator "First name" dto.FirstName
-    and! last = nameValidator "Last name" dto.LastName
-    and! email = emailValidator "Email address" dto.Email
-    and! age = ageValidator "Age" dto.Age
-    and! startDate = dateValidator "Start Date" dto.StartDate
+        let! first = nameValidator "First name" dto.FirstName
+        and! last = nameValidator "Last name" dto.LastName
+        and! email = emailValidator "Email address" dto.Email
+        and! age = ageValidator "Age" dto.Age
+        and! startDate = dateValidator "Start Date" dto.StartDate
 
-    // Construct Person if all validators return Success
-    return {
-        Name = { First = first; Last = last }
-        Email = email
-        Age = age
-        StartDate = startDate }
-    }
+        // Construct Person if all validators return Success
+        return {
+            Name = { First = first; Last = last }
+            Email = email
+            Age = age
+            StartDate = startDate }
+        }
 ```
 
-and use it in our `Main` function to populate some content in our html:
+and use it in our `Main` function to populate some content in our HTML:
 
 ```fsharp
 [<SPAEntryPoint>]
 let Main () =
-    
     let scenario1, single_err =
         {
             FirstName = "John"
@@ -135,7 +151,8 @@ let Main () =
             Email     = "john@john"
             Age       = Some 15
             StartDate = Some (DateTime(2035,12,01))
-        } |> fun d -> d, Person.ofDto d
+        }
+        |> fun d -> d, Person.ofDto d
 
     let scenario2, multi_err =
         {
@@ -144,7 +161,8 @@ let Main () =
             Email     = "john"
             Age       = None
             StartDate = Some (DateTime(1999,12,01))
-        } |> fun d -> d, Person.ofDto d
+        }
+        |> fun d -> d, Person.ofDto d
 
     let scenario3, ok =
         {
@@ -153,7 +171,8 @@ let Main () =
             Email     = "john@doe.com"
             Age       = Some 15
             StartDate = Some (DateTime(2035,12,01))
-        } |> fun d -> d, Person.ofDto d
+        }
+        |> fun d -> d, Person.ofDto d
 
     let resolveValidation (r: Result<Person, ValidationErrors>) =
         match r with
@@ -176,7 +195,7 @@ let Main () =
     r3.TextContent <- resolveValidation ok
 ```
 
-Combining this with our simple html:
+Combining this with some simple markup (part of `index.html`):
 
 ```html
 <h2>Single error example</h2>
@@ -200,13 +219,15 @@ We will get the validation by `Validus` running in our browser with WebSharper:
 
 ![Image of sample site](https://i.imgur.com/H2gYdbG.png)
 
+
 ## Closure
 
-All the code used in this blog entry can be found at [my repository][2] and the sample project is deployed live at [here][3]
+All the code used in this blog entry can be found in [this repository][2], and the sample project is also deployed live [here][3]. Please note that in order to run the application on your machine, you will need to add the WebSharper GitHub packages feed to your NuGet sources - see [this page][5] for more details.
 
-Thanks to Sergey Tihon for organizing the [F# Advent Calendar][4] in 2023 again and I hope I could show something new for the readers!
+Thanks to Sergey Tihon for organizing [F# Advent][4] in 2023 again, and I hope that you find this article useful!
 
 [1]: https://github.com/pimbrouwers/Validus
 [2]: https://github.com/jooseppi12/fsadvent2023
 [3]: jooseppi12.github.io/fsadvent2023
 [4]: https://sergeytihon.com/2022/10/28/f-advent-calendar-in-english-2022/
+[5]: https://docs.websharper.com/basics/nuget/
