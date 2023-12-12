@@ -228,6 +228,6 @@ Thanks to Sergey Tihon for organizing [F# Advent][4] in 2023 again, and I hope t
 
 [1]: https://github.com/pimbrouwers/Validus
 [2]: https://github.com/jooseppi12/fsadvent2023
-[3]: jooseppi12.github.io/fsadvent2023
+[3]: https://jooseppi12.github.io/fsadvent2023
 [4]: https://sergeytihon.com/2023/10/28/f-advent-calendar-in-english-2023/
 [5]: https://docs.websharper.com/basics/nuget/
