@@ -35,13 +35,13 @@ For one of these new PTs, I decided to take my "Full-stack F# with charting, rea
 
 For the general idea and walkthrough of the charting and forms bits, feel free to refer to the [article](https://intellifactory.com/user/granicz/20221229-full-stack-fsharp-with-charting-reactive-forms-and-more-under-300-loc-with-websharper) - it's a fun read! As for the rest of the updated version, here is a quick summary.
 
-### Tailwind for UI
+### 1. Tailwind for UI
 
 The `fullstack-spa` PT uses an MIT-licensed [Tailwind](https://tailwindcss.com/)-based template, [Windmill Dashboard](https://github.com/estevanmaito/windmill-dashboard) by [@estevanmaito](https://github.com/estevanmaito), part of the [Windmill UI suite](https://windmillui.com/). It's a lovely free resource for web devs, supports dark/light modes, comes with a bundle of prebuilt admin and other components/pages, etc. - so be sure to support Estevan's work in any way you can.
 
 Changing, or even swapping out the presentation layer entirely only requires changing a single file (`client/index.html`). Since the PT uses WebSharper.UI templating, be sure to correctly apply the templating attributes (`ws-*`) for any new UI building block. These then will expose new types and members for your F# code to use for each template, placeholder, etc in the source template. Type-safe templating for the win!
 
-### Code reorganization and a separate build project
+### 2. Code reorganization and a separate build project
 
 Instead of the [FSAdvent2022 application](https://github.com/granicz/fsadvent2022)'s single F# project to hold both the server and client-side, these are now split into three separate F# projects: `client`, `server`, and `shared`. This is not strictly necessary as the WebSharper Booster (which is responsible for cached compilation of WebSharper projects) usually recompiles colocated client+server code in a 2-3-4 seconds, it can, however, result in faster turn-around times if your changes to be compiled are only in your client-side code.
 
@@ -50,7 +50,7 @@ The new build project (`Build.fsproj` and `build/build.fs`) follows the typical 
 [<img src="/assets/watch-recompilation.png" alt="image" width="50%" height="auto">](/assets/watch-recompilation.png)
 
 
-### ESM output and Vite
+### 3. ESM output and Vite
 
 WebSharper 7 produces one-file-per-type (OFPT) ESM output and TypeScript declarations, and while it has its own dead-code eliminator and bundler, it is also designed to readily integrate with standard JavaScript tooling, and this PT is no exception: it comes with [vite](https://vitejs.dev/) for running an ESM development server and providing production mode bundling.
 
@@ -63,12 +63,12 @@ dotnet run
 [<img src="/assets/vite.png" alt="image" width="50%" height="auto">](/assets/vite.png)
 
 
-### Femto
+### 4. Femto
 
-WebSharper 7 JavaScript bindings/NuGet packages are compatible with [femto](https://github.com/Zaid-Ajaj/Femto) for managing their underlying npm dependencies. You can use femto to finetune/update/validate package references in your `packages.config` as needed, and otherwise just continue adding new WebSharper references as NuGet.
+WebSharper 7 JavaScript bindings/NuGet packages are compatible with [femto](https://github.com/Zaid-Ajaj/Femto) for managing their underlying npm dependencies. You can use femto to finetune/update/validate package references in your `packages.config` as needed, and otherwise just continue adding new WebSharper libraries as NuGet packages.
 
 
-### Record-style RPCs
+### 5. Record-style RPCs
 
 WebSharper 7 remoting supports record-style RPCs, in addition to annotated RPCs and classes used in previous releases. One added benefit is that WebSharper RPCs are now also callable from [Fable.Remoting](https://github.com/Zaid-Ajaj/Fable.Remoting) clients (as long as the types involved are supported by the caller code), and vice versa with minimal code changes.
 
@@ -145,7 +145,7 @@ More PTs are underway. Some of these PTs will showcase using Elmish+React+JSX an
 
 The standard UI paradigm for WebSharper applications has been a native-F#, dynamic dataflow-based reactive model via [WebSharper.UI](https://github.com/dotnet-websharper/ui), similar to the increasingly popular SolidJS/Svelte approach in JS applications. In addition, an Elmish-like Model-View-Update (MVU) library has been implemented on top as [WebSharper.Mvu](https://github.com/dotnet-websharper/mvu), and later, an actual Elmish implementation was added under [WebSharper.Elmish](https://github.com/elmish/elmish). This latter library used a [proxy](https://developers.websharper.com/docs/v4.x/fs/proxying), WebSharper's way of providing translation over arbitrary .NET APIs, to bring Elmish to WebSharper.
 
-Recently, we have been investigating adding other proxies around some of the notable non-WebSharper libraries from the F# web ecosystem (Feliz, etc.) and Fable itself. This will soon open up interesting possibilities for both Fable and WebSharper developers, enable Fable web developers to benchmark code generation using WebSharper on their Fable apps, and to use WebSharper features otherwise not available in their stacks. For instance, essentially, you can soon take a Fable SPA and compile it with WebSharper without requiring any code changes, enhance it with WebSharper features/code, and host it in a WebSharper sitelet.
+Recently, we have been investigating adding more proxies around some of the notable non-WebSharper libraries from the F# web ecosystem (Feliz, etc.) and Fable itself. This will soon open up interesting possibilities for both Fable and WebSharper developers, enable Fable web developers to benchmark code generation using WebSharper on their Fable apps, and to use WebSharper features otherwise not available in their stacks. For instance, essentially, you can soon take a Fable SPA and compile it with WebSharper without requiring any code changes, enhance it with WebSharper features/code, and host it in a WebSharper sitelet.
 
 If you would like to further explore what WebSharper can do for your existing .NET web apps, feel free to DM me on X/FB/LinkedIn, or use our [contact form](https://intellifactory.com/contact) to get in touch.
 
