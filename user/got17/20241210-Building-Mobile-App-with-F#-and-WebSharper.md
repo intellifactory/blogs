@@ -1,24 +1,31 @@
 
 # Building Mobile App with F# and WebSharper
 
-Hello, everyone! it is time to show you how we can create **Mobile Application** by using F# and WebSharper.
+Hello, everyone! In this article, we will explore how to create mobile applications in F# with WebSharper. Whether you're new to mobile development or functional programming, this guide will help you get started with practical steps and examples.
 
 ## Introduction
 
-This Mobile app is a simple Android application that allows users to take or choose a picture, annotate it by drawing directly on the image, and then save or share it. This guide will show you how to develop this app using F# and WebSharper. Whether you’re interested in functional programming or mobile development, this project provides a hands-on experience.
+| Before adding a image | After adding a image and drawing |
+|--|--|
+| [![](/assets/picdrawapp-before-adding-image.jpg)](/assets/picdrawapp-before-adding-image.jpg) | [![](/assets/picdrawapp-after-adding-image.jpg)](/assets/picdrawapp-after-adding-image.jpg) |
+
+
+This mobile app is a simple Android application that allows users to take or choose a picture, annotate it by drawing directly on the image, and then save or share it. This guide will show you how to develop this app using F# and WebSharper. Whether you’re interested in functional programming or mobile development, this project provides a hands-on experience.
+
+While the focus is on Android, you can create an iOS app from the same codebase. To build for iOS, you'll need access to a MacBook, install Xcode, and configure the iOS platform using Capacitor. Refer to the Capacitor documentation for detailed steps on setting up an iOS build.
 
 ## Why F# and WebSharper?
 
 F# is a functional-first programming language that emphasizes immutability and concise syntax, making it ideal for modern web and mobile applications. WebSharper enables you to create interactive web and mobile apps with minimal hassle.
 
-This article guides you through building the Mobile Application called 'PicDraw App' that features image capture, drawing functionality, and the ability to save and share the resulting image.
+This article guides you through building a mobile application we call 'PicDraw' that features image capture, drawing functionality, and the ability to save and share the resulting image.
 
 > ## Try it out!
 > 1. Clone the repo: `git clone https://github.com/Got17/Pic-draw-app.git`
 > 2. Change directory to the project: `cd Pic-draw-app/PicDrawApp`
 > 3. Build the project: `dotnet build` 
 > 4. Dowload all necessary packages: `npm install` 
-> 5. Run the project: `npx vite`
+> 5. Run the project in web browser: `npx vite`
 
 ## 1. Setting Up Your Development Environment
 
@@ -27,11 +34,11 @@ To develop this app, you will need the following tools:
 1. **Visual Studio**: Install Visual Studio with F# and WebSharper templates.
 2. **Capacitor**: [Capacitor](https://capacitorjs.com "Capacitor") is a tool that helps you deploy web-based apps to Android and iOS. In order to use Capacitor successfully, please install Capacitor Core plugin (`npm i @capacitor/core`) and Capacitor command-line interface (CLI) (`npm i @capacitor/cli`).
 3. **Android SDK**: Install the [Android SDK](https://developer.android.com/studio "Android SDK") for deploying the app to your device or emulator.
-4. **WebSharper**: WebSharper helps you write full-stack applications in F#, including both frontend and backend.
+4. **WebSharper**: [WebSharper](https://websharper.com "WebSharper") helps you write full-stack applications in F#, including both frontend and backend.
 
-## 2. Building the PicDraw App
+## 2. Building PicDraw
 
-Let’s break down the features of the PicDraw App:
+Let’s break down the features of PicDraw:
 
 #### a. User Interface
 
@@ -81,7 +88,7 @@ In order to use Camera plugin we need to install [PWA Elements](https://capacito
 The `takePicture()` function captures an image using the device’s camera or allows the user to select an image from their gallery. Once selected, the image is displayed on the canvas for drawing.
 
 ```fsharp
-// Create canvas() function. We will use it only when it is needed only.
+// Create canvas() function. We will use it only when it is needed.
 let canvas() = As<HTMLCanvasElement>(JS.Document.GetElementById("annotationCanvas"))
 
 // Function for putting the image on the canvas
@@ -98,7 +105,7 @@ let loadImageOnCanvas (imagePath: string) =
 
     img.Dom.SetAttribute("src", imagePath)
 
-// FUnction for taking or choosing a picture
+// Function for taking or choosing a picture
 let takePicture() = promise {
     let! image = Capacitor.Camera.GetPhoto(Camera.ImageOptions(
         resultType = Camera.CameraResultType.Uri,
@@ -137,6 +144,9 @@ In the above function, the drawing is handled by capturing mouse movements and d
 ```fsharp
 let isDrawing = Var.Create false
 let lastX, lastY = Var.Create 0.0, Var.Create 0.0 
+
+let MouseUpAndOutAction (isDrawing) = 
+    Var.Set isDrawing <| false  
 
 // Template for Mouse events handling
 IndexTemplate.PicDraw()
@@ -226,7 +236,7 @@ IndexTemplate.PicDraw()
 
 #### d. Saving and Sharing the Image
 
-Once the user has finished annotating the image, they can save and share it using the `Save & Share` button. The app uses [Filesystem](https://capacitorjs.com/docs/apis/filesystem "Filesystem plugin") and [Share](https://capacitorjs.com/docs/apis/share "Share plugin") plugins to save the canvas image and share it via email, messaging, or other installed apps.
+Once the user has finished annotating the image, they can save and share it using the `Save & Share` button. The app uses [Filesystem](https://capacitorjs.com/docs/apis/filesystem "Filesystem plugin") and [Share](https://capacitorjs.com/docs/apis/share "Share plugin") plugins, which are part of Capacitor, to save the canvas image and share it via email, messaging, or other installed apps.
 
 For Filesystem plugin, it is crucial to add permissions in order to access the files/folders. The following permissions must be added to your `.\android\app\src\main\AndroidManifest.xml` for Android.
 
