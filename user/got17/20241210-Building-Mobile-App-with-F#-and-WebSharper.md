@@ -1,5 +1,9 @@
-
-# Building Mobile App with F# and WebSharper
+---
+title: "Building Mobile App with F# and WebSharper"
+categories: "f#,websharper,ui,android,capacitor,vite,fsadvent"
+abstract: ""
+identity: "-1,-1"
+---
 
 Hello, everyone! In this article, we will explore how to create mobile applications in F# with WebSharper. Whether you're new to mobile development or functional programming, this guide will help you get started with practical steps and examples.
 
@@ -23,9 +27,9 @@ This article guides you through building a mobile application we call 'PicDraw' 
 > ## Try it out!
 > 1. Clone the repo: `git clone https://github.com/Got17/Pic-draw-app.git`
 > 2. Change directory to the project: `cd Pic-draw-app/PicDrawApp`
-> 3. Build the project: `dotnet build` 
+> 3. Build the project: `dotnet build` and `npx vite build`
 > 4. Dowload all necessary packages: `npm install` 
-> 5. Run the project in web browser: `npx vite`
+> 5. Run the project: `npx vite` (for Web Browser) or `npx cap open android` (for Android device or emulator)
 
 ## 1. Setting Up Your Development Environment
 
