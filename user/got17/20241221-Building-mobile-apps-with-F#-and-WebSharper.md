@@ -1,5 +1,5 @@
 ---
-title: "Building Mobile App with F# and WebSharper"
+title: "Building mobile apps with F# and WebSharper"
 categories: "f#,websharper,ui,android,capacitor,vite,fsadvent"
 abstract: ""
 identity: "-1,-1"
