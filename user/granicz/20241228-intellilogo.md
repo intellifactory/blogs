@@ -13,7 +13,7 @@ In this article, I will give a quick overview of a more sophisticated rewrite, b
 
 | | | |
 |--|--|--|
-| [![](../assets/intellilogo-app.png)](../assets/intellilogo-app.png) | [![](../assets/intellilogo-warning.png)](../assets/intellilogo-warning.png) | [![](../assets/intellilogo-plant.png)](../assets/intellilogo-plant.png) |
+| [![](/assets/intellilogo-app.png)](/assets/intellilogo-app.png) | [![](/assets/intellilogo-warning.png)](/assets/intellilogo-warning.png) | [![](/assets/intellilogo-plant.png)](/assets/intellilogo-plant.png) |
 
 
 > Currently, WebSharper 8 is in beta, and it is most readily available from the WebSharper GitHub/developer feed. Check [here](https://docs.websharper.com/basics/nuget/) about configuring your NuGet/Paket client to use these releases, you won't be able to compile the [project](https://github.com/granicz/IntelliLogo) otherwise!
