@@ -5,7 +5,7 @@ abstract: ""
 identity: "-1,-1"
 ---
 
-I want to write my own bookmark "manager". Really the most important part is, I want to be able to access sites quickly while I'm on my phone, as the browser's bookmark manager doesn't really cut it for me. On my computer, I do use [buku](1). For someone who spends most of their time in the terminal, it's amazing. But that does not really translate to a good experience on mobile. So I want to build a quick prototype, where I can see what I really need on a mobile to conveniently access my bookmarks. To achieve this I'm going to use WebSharper's Offline Sitelets to generate static pages. You can check out the source code [here](https://github.com/Jooseppi12/fsadvent2025) and [here](https://jooseppi12.github.io/fsadvent2025) is a deployed version of the project.
+I want to write my own bookmark "manager". Really the most important part is, I want to be able to access sites quickly while I'm on my phone, as the browser's bookmark manager doesn't really cut it for me. On my computer, I do use [buku](https://github.com/jarun/buku). For someone who spends most of their time in the terminal, it's amazing. But that does not really translate to a good experience on mobile. So I want to build a quick prototype, where I can see what I really need on a mobile to conveniently access my bookmarks. To achieve this I'm going to use WebSharper's Offline Sitelets to generate static pages. You can check out the source code [here](https://github.com/Jooseppi12/fsadvent2025) and [here](https://jooseppi12.github.io/fsadvent2025) is a deployed version of the project.
 
 ## The storage format
 
@@ -150,7 +150,7 @@ client <@ Client.Search () @>
 
 With this WebSharper knows the boundary between code that requires functionality from the browser and the rest of the code that is generated on compile time. As the Offline Sitelet during compilation emulates a server behind, it really is a normal WebSharper Sitelet, that on the compilation generates static html from certain, specified endpoints, but more on that below.
 
-![List view](https://i.imgur.com/1wlNfQW.png)
+![List view](https://i.imgur.com/YkBLSsM.png)
 
 ## Static code generation
 
