@@ -24,7 +24,7 @@ I'm adding tags as well, as later on I want to implement some special logic with
 
 ## Home page view
 
-The inspiration for this project came from [this](https://css-tricks.com/hexagons-and-beyond-flexible-responsive-grid-patterns-sans-media-queries/) article on CSS-Tricks. When I saw this, it immediately made me think, that such a layout could be quite interesting to use on phone. CSS has come a long way over the years, so the above layout is entirely possible to achieve without any libraries. So I'm going to generate my layout based on this.
+The inspiration for this project came from [this](https://css-tricks.com/hexagons-and-beyond-flexible-responsive-grid-patterns-sans-media-queries/) article on CSS-Tricks. When I saw this, it immediately made me think that such a layout could be quite interesting to use on phone. CSS has come a long way over the years, so the above layout is entirely possible to achieve without any libraries. So I'm going to generate my layout based on this.
 
 This page is going to be fully rendered on the "server" side, I don't need JS functionality on this page. Let's look at the below html:
 
@@ -36,7 +36,7 @@ This page is going to be fully rendered on the "server" side, I don't need JS fu
 </div>
 ```
 
-The above is going to represent one item on my grid. It's nothing complicated, we just have an `a` tag with a `span` that will show the initial character of the website. Additionally, we have a `data-tags` attribute, that will hold all tags associated with a given bookmark.
+The above is going to represent one item on my grid. It's nothing complicated, we just have an `a` tag with a `span` that will show the initial character of the website. Additionally, we have a `data-tags` attribute that will hold all tags associated with a given bookmark.
 
 So, on the generating process the following function will generate my the whole page for me:
 
@@ -73,7 +73,7 @@ let HomePage ctx (data: Types.Bookmark []) =
     ]
 ```
 
-In the above function `data` is just the collection of all bookmarks, that is defined in a json file, that is read on on the start of the static generation process, which is filtered down to the ones, that I want to feature on a quick access view
+In the above function `data` is just the collection of all bookmarks which is defined in a json file and is read on on the start of the static generation process, which is filtered down to the ones that I want to feature on a quick access view.
 
 To give some categorization for the grid layout, we can apply some css rules based on the above defined `data-tags` attribute.
 
@@ -140,7 +140,7 @@ let Search () =
         .Doc()
 ```
 
-Important to note, that this function is in a module that has the `[<JavaScript>]` annotation, so that WebSharper knows to generate JS for the code above!
+Important to note, this function is in a module that has the `[<JavaScript>]` annotation, so that WebSharper knows to generate JS for the code above!
 
 To include this into the static code generation, we are using the `client` helper function, like this:
 
