@@ -33,6 +33,19 @@ Armed with Tabler, we can embed annotated CSV source files directly in WebSharpe
   </figcaption>
 </figure>
 
+With the help of the generated code, you get ready-to-embed, highly customizable HTML tables from the raw data file:
+
+<figure style="text-align: center;">
+  <img src="../../assets/tabler-table.png"
+       alt="Solution tree"
+       style="max-width: 800px; width: 100%; margin: 0 auto;" />
+  <figcaption style="font-size: 0.9em; opacity: 0.7;">
+    Figure 1: Tabler-generated file in VS
+  </figcaption>
+</figure>
+
+## CSV file format
+
 A sample annotated CSV file looks like this:
 
 ```csv
